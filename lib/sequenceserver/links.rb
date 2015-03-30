@@ -91,8 +91,10 @@ module SequenceServer
 
 	def lepbase
       accession = encode self.accession
+      database_names = encode querydb.map(&:name).join(' ')
       species = 'Bombyx_mori'
-      url = "http://ensembl.lepbase.org/#{species}/Transcript/ProteinSummary?db=core;p=#{accession}"
+      url = "http://ensembl.lepbase.org/#{species}/Transcript/ProteinSummary?db=core;p=#{accession}" \
+            "&database_names=#{database_names}&download=fasta"
       {
         :order => 2,
         :title => 'lepbase',
