@@ -90,8 +90,9 @@ module SequenceServer
     end
 
 	def lepbase
-      accession  = encode self.accession
-      url = "http://ensembl.lepbase.org/#{accession}"
+      accession = encode self.accession
+      species = 'Bombyx_mori'
+      url = "http://ensembl.lepbase.org/#{species}/Transcript/ProteinSummary?db=core;p=#{accession}"
       {
         :order => 2,
         :title => 'lepbase',
