@@ -89,6 +89,17 @@ module SequenceServer
       }
     end
 
+	def lepbase
+      accession  = encode self.accession
+      url = "http://ensembl.lepbase.org/#{accession}"
+      {
+        :order => 2,
+        :title => 'lepbase',
+        :url   => url,
+        :icon  => 'fa-external-link'
+      }
+    end
+
     def ncbi
       return nil unless id.match(NCBI_ID_PATTERN)
       ncbi_id = Regexp.last_match[1]
