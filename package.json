@@ -1,9 +1,9 @@
 {
-    "name": "SequenceServer",
-    "description": "BLAST searching made easy!",
+    "name": "LepBlast",
+    "description": "powered by SequenceServer",
     "version": "1.0.0-2",
-    "homepage": "http://www.sequenceserver.com",
-    "repository": "https://github.com/yannickwurm/sequenceserver",
+    "homepage": "http://blast.lepbase.org",
+    "repository": "https://bitbucket.org/lepbase/lepbase-sequenceserver",
     "author": {
         "name": "Anurag Priyam",
         "email": "anurag08priyam@gmail.com"

@@ -11,3 +11,8 @@ original copyright and license notices, except D3.js whose license can be
 found in LICENSE/d3.txt. We modify biojs-vis-sequence. The modified file
 can be found in public/js/sequence.js. A copy of Apache license can be
 found in LICESNSE/Apache.txt.
+
+LepBlast is a fork of SequenceServer for the LepBase Project, with minor 
+changes to configuration files to customise the appearance and content for
+the Lepidoptera under the same license as SequenceServer, copyright Richard 
+Challis and Sujai Kumar at the University of Edinburgh, 2015.
