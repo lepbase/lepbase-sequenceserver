@@ -8,7 +8,7 @@ module SequenceServer
     #
     alias_method :encode, :url_encode
 
-    NCBI_ID_PATTERN = /gi\|(\d+)\|/
+    ID_PATTERN = /(.+?)\|(.+)/
 
     # Link generators return a Hash like below.
     #
@@ -90,12 +90,13 @@ module SequenceServer
     end
 
 	def lepbase
-      accession = encode self.accession
-      database_names = encode querydb.map(&:name).join(' ')
+      return nil unless id.match(ID_PATTERN)
+      assembly = Regexp.last_match[0]
+      accession = Regexp.last_match[1]
+      assembly = encode assembly
+      accession = encode accession
       species = 'Bombyx_mori'
-      #url = "http://ensembl.lepbase.org/#{species}/Transcript/ProteinSummary?db=core;p=#{accession}" \
-      #      "&database_names=#{database_names}&download=fasta"
-      url = self.to_yaml
+      url = "http://ensembl.lepbase.org/#{assembly}/Transcript/ProteinSummary?db=core;p=#{accession}"
       {
         :order => 2,
         :title => 'lepbase',
@@ -104,18 +105,6 @@ module SequenceServer
       }
     end
 
-    def ncbi
-      return nil unless id.match(NCBI_ID_PATTERN)
-      ncbi_id = Regexp.last_match[1]
-      ncbi_id = encode ncbi_id
-      url = "http://www.ncbi.nlm.nih.gov/#{querydb.first.type}/#{ncbi_id}"
-      {
-        :order => 2,
-        :title => 'NCBI',
-        :url   => url,
-        :icon  => 'fa-external-link'
-      }
-    end
   end
 end
 
