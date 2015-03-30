@@ -33,15 +33,18 @@
     class="navbar">
     <div
       class="container">
+      <img src="img/lepblast.png" style="height:41px;width:175px"
+        href="http://blast.lepbase.org" title="lepblast">
+      </img>
       <a
         class="navbar-brand"
         href="http://sequenceserver.com" target="_blank">
-        SequenceServer
         <small>
+          powered by SequenceServer
           <%= SequenceServer::VERSION %>
         </small>
       </a>
-      <ul class="nav navbar-nav navbar-right hover-reset focus-reset">
+      <!--ul class="nav navbar-nav navbar-right hover-reset focus-reset">
         <li>
           <a
             target="_blank"
@@ -50,7 +53,7 @@
             Help &amp; Support
           </a>
         </li>
-      </ul>
+      </ul-->
     </div>
   </div>
 
@@ -282,28 +285,31 @@
         href='http://www.sequenceserver.com'>
         <%=
           quote = [
-            "Custom BLAST web interface by SequenceServer.",
-            "SequenceServer: Local BLAST with bespoke html interface.",
-            "Set up custom BLAST interface with SequenceServer.",
-            "Easy BLASTing with SequenceServer.", 
-	    "Run Blast locally with Sequenceserver", 
-	    "BLAST against a local database"  
-          ][rand(6)]
+            "LepBase BLAST interface – powered by SequenceServer." 
+          ][rand(1)]
         %>
       </a>
-      <a
+      <!--a
         class="twitter-share-button"
         href="https://twitter.com/share"
         data-url="http://www.sequenceserver.com" data-text="<%= quote %>" data-via="yeban" data-hashtags="bioinformatics">
         Tweet
       </a>
-      <%#<div class="g-plusone" data-annotation="none" data-href="http://www.sequenceserver.com"></div>%>
+      <%#<div class="g-plusone" data-annotation="none" data-href="http://www.sequenceserver.com"></div>%-->
 
       <br>
-      Please Cite:
+      <a class="control-label">Citations</a>
+      <br>
+      SequenceServer:
       <a href='http://www.sequenceserver.com'>
         Priyam, Woodcroft, Rai & Wurm, <strong>SequenceServer</strong> (<em>in prep</em>)
       </a>
+      <br>
+      LepBase:
+      <a href='http://lepbase.org'>
+        lepbase.org
+      </a>
+      <br>
       &amp; relevant data sources.
     </p>
   </div>
