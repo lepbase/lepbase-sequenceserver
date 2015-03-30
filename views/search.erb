@@ -34,10 +34,10 @@
     <div
       class="container">
       <a class="navbar-brand">
-        <span href="http://blast.lepbase.org">
+        <span href="http://blast.lepbase.org" style="cursor:pointer">
           BLAST LepBase
         </span>
-        <span href="http://sequenceserver.com" target="_blank">
+        <span href="http://sequenceserver.com" target="_blank" style="cursor:pointer">
         <small>
           – powered by SequenceServer<%= SequenceServer::VERSION %>
         </small>
@@ -288,16 +288,8 @@
           ][rand(1)]
         %>
       </a>
-      <!--a
-        class="twitter-share-button"
-        href="https://twitter.com/share"
-        data-url="http://www.sequenceserver.com" data-text="<%= quote %>" data-via="yeban" data-hashtags="bioinformatics">
-        Tweet
-      </a>
-      <%#<div class="g-plusone" data-annotation="none" data-href="http://www.sequenceserver.com"></div>%-->
-
       <br>
-      <a class="control-label">Citations</a>
+      <a>Citations</a>
       <br>
       SequenceServer:
       <a href='http://www.sequenceserver.com'>
@@ -310,6 +302,15 @@
       </a>
       <br>
       &amp; relevant data sources.
+      <!--a
+        class="twitter-share-button"
+        href="https://twitter.com/share"
+        data-url="http://www.sequenceserver.com" data-text="<%= quote %>" data-via="yeban" data-hashtags="bioinformatics">
+        Tweet
+      </a>
+      <%#<div class="g-plusone" data-annotation="none" data-href="http://www.sequenceserver.com"></div>%-->
+
+      
     </p>
   </div>
 
