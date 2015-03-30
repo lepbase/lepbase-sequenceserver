@@ -33,17 +33,18 @@
     class="navbar">
     <div
       class="container">
-      <img src="img/lepblast.png" style="height:41px;width:175px"
-        href="http://blast.lepbase.org" title="lepblast">
-      </img>
-      <a
-        class="navbar-brand"
-        href="http://sequenceserver.com" target="_blank">
+      <a class="navbar-brand">
+        <span href="http://blast.lepbase.org">
+          LepBase BLAST search
+        </span>
+        powered by 
+        <span href="http://sequenceserver.com" target="_blank">
+          SequenceServer
         <small>
-          powered by SequenceServer
           <%= SequenceServer::VERSION %>
         </small>
-      </a>
+        </span>
+    </a>
       <!--ul class="nav navbar-nav navbar-right hover-reset focus-reset">
         <li>
           <a
