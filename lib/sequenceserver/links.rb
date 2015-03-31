@@ -103,7 +103,7 @@ module SequenceServer
       accession = Regexp.last_match[2]
       assembly = encode assembly
       accession = encode accession
-      whichdb = encode self.whichdb.first
+      #whichdb = encode self.whichdb.first
       colon = encode ':'
       url = "http://ensembl.lepbase.org/#{assembly}"
       if type == 'aa'
@@ -117,7 +117,7 @@ module SequenceServer
       	qend = encode self.qend
         url = "#{url}/Location/View?r=#{accession}#{colon}#{qstart}-#{qend}"
       end
-        url ="#{url};j=#{whichdb}"
+      #  url ="#{url};j=#{whichdb}"
       {
         :order => 2,
         :title => 'lepbase',
