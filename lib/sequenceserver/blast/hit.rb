@@ -23,6 +23,17 @@ module SequenceServer
         hsps.map(&:bit_score).reduce(:+)
       end
 
+      # Hit qstart is the minimum qstart of all HSP(s).
+      def qstart
+        hsps.map(&:qstart).min
+      end
+
+      # Hit qend is the maximum qend of all HSP(s).
+      def qend
+        hsps.map(&:qend).max
+      end
+
+
       def links
         links = Links.instance_methods.map { |m| send m }
         links.compact!
