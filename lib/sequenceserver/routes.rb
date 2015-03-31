@@ -53,7 +53,11 @@ module SequenceServer
         target = absolute?(link[:url]) && '_blank' || '_self'
         a =  %(<a href="#{link[:url]}" class="#{link[:class]}" \
 target="#{target}">)
-        a << %(<i class="fa #{link[:icon]}"></i> ) if link[:icon]
+        if link[:img]
+          a << %(<imgclass="fa" src="#{link[:img]}"></img> )
+        else
+          a << %(<i class="fa #{link[:icon]}"></i> ) if link[:icon]
+        end
         a << "#{link[:title]}</a>"
       end
 

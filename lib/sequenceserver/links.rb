@@ -120,7 +120,8 @@ module SequenceServer
         :order => 2,
         :title => 'lepbase',
         :url   => url,
-        :icon  => 'fa-external-link'
+        :icon  => 'fa-external-link',
+        :img  => 'img/e-lepbase.png'
       }
     end
 
