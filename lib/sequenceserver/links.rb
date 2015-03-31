@@ -8,7 +8,7 @@ module SequenceServer
     #
     alias_method :encode, :url_encode
 
-    ID_PATTERN = /(.+?)\|(.+)/
+    ID_PATTERN = /(.+?)\|(.+?)\|(.+)/
 #	aa|Bombyx_mori|NP_6723934.1
 #	cds|Bombyx_mori|NP_6723934.1
 #	transcript|Bombyx_mori|NP_6723934.1
@@ -97,22 +97,20 @@ module SequenceServer
 
 	def lepbase
       return nil unless id.match(ID_PATTERN)
-      #type = Regexp.last_match[1]
-      type = 'ctg'
       assembly = Regexp.last_match[1]
-      accession = Regexp.last_match[2]
+      type = Regexp.last_match[2]
+      accession = Regexp.last_match[3]
       assembly = encode assembly
       accession = encode accession
-      #whichdb = encode self.whichdb.first
       colon = encode ':'
       url = "http://ensembl.lepbase.org/#{assembly}"
-      if type == 'aa'
+      if type == 'protein' || type == 'aa'
         url = "#{url}/Transcript/ProteinSummary?db=core;p=#{accession}"
       elsif type == 'cds' || type == 'transcript'
         url = "#{url}/Transcript/Summary?db=core;t=#{accession}"
       elsif type == 'gene'
       	url = "#{url}/Gene/Summary?db=core;g=#{accession}"
-      elsif type == 'ctg' || type == 'scaf' || type == 'chr'
+      elsif type == 'contig' || type == 'scaffold' || type == 'chromosome'
       	subjstart = encode self.subjstart
       	subjend = encode self.subjend
         url = "#{url}/Location/View?r=#{accession}#{colon}#{subjstart}-#{subjend}"
