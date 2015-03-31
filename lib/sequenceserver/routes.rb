@@ -54,7 +54,7 @@ module SequenceServer
         a =  %(<a href="#{link[:url]}" class="#{link[:class]}" \
 target="#{target}">)
         if link[:img]
-          a << %(<img class="fa" src="#{link[:img]}"></img> )
+          a << %(<img style="height:14px" src="#{link[:img]}"></img> )
         else
           a << %(<i class="fa #{link[:icon]}"></i> ) if link[:icon]
         end
