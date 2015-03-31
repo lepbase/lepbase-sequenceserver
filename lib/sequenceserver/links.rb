@@ -8,7 +8,7 @@ module SequenceServer
     #
     alias_method :encode, :url_encode
 
-    ID_PATTERN = /(.+?)\|(.+?)\|(.+)/
+    ID_PATTERN = /(.+?)\|(.+)/
 #	aa|Bombyx_mori|NP_6723934.1
 #	cds|Bombyx_mori|NP_6723934.1
 #	transcript|Bombyx_mori|NP_6723934.1
@@ -97,12 +97,13 @@ module SequenceServer
 
 	def lepbase
       return nil unless id.match(ID_PATTERN)
-      type = Regexp.last_match[1]
-      assembly = Regexp.last_match[2]
-      accession = Regexp.last_match[3]
+      #type = Regexp.last_match[1]
+      type = 'aa'
+      assembly = Regexp.last_match[1]
+      accession = Regexp.last_match[2]
       assembly = encode assembly
       accession = encode accession
-      whichdb = encode self.whichdb
+      whichdb = encode self.whichdb.first
       colon = encode ':'
       url = "http://ensembl.lepbase.org/#{assembly}"
       if type == 'aa'
