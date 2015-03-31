@@ -117,7 +117,7 @@ module SequenceServer
       	qend = encode self.qend
         url = "#{url}/Location/View?r=#{accession}#{colon}#{qstart}-#{qend}"
       end
-        url ="#{url};j=#{which_db}"
+        url ="#{url};j=#{whichdb}"
       {
         :order => 2,
         :title => 'lepbase',
