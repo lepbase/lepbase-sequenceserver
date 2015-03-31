@@ -23,14 +23,14 @@ module SequenceServer
         hsps.map(&:bit_score).reduce(:+)
       end
 
-      # Hit qstart is the minimum qstart of all HSP(s).
-      def qstart
-        hsps.map(&:qstart).min
+      # Hit sstart is the minimum sstart of all HSP(s).
+      def sstart
+        hsps.map(&:sstart).min
       end
 
-      # Hit qend is the maximum qend of all HSP(s).
-      def qend
-        hsps.map(&:qend).max
+      # Hit send is the maximum send of all HSP(s).
+      def send
+        hsps.map(&:send).max
       end
 
 
