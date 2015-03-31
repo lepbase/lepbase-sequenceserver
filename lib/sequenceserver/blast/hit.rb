@@ -23,13 +23,13 @@ module SequenceServer
         hsps.map(&:bit_score).reduce(:+)
       end
 
-      # Hit sstart is the minimum sstart of all HSP(s).
-      def sstart
+      # Hit subjstart is the minimum sstart of all HSP(s).
+      def subjstart
         hsps.map(&:sstart).min
       end
 
-      # Hit send is the maximum send of all HSP(s).
-      def send
+      # Hit subjend is the maximum send of all HSP(s).
+      def subjend
         hsps.map(&:send).max
       end
 

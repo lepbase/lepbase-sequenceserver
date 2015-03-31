@@ -113,9 +113,9 @@ module SequenceServer
       elsif type == 'gene'
       	url = "#{url}/Gene/Summary?db=core;g=#{accession}"
       elsif type == 'ctg' || type == 'scaf' || type == 'chr'
-      	sstart = encode self.sstart
-      	send = encode self.send
-        url = "#{url}/Location/View?r=#{accession}#{colon}#{sstart}-#{send}"
+      	subjstart = encode self.subjstart
+      	subjend = encode self.subjend
+        url = "#{url}/Location/View?r=#{accession}#{colon}#{subjstart}-#{subjend}"
       end
       #  url ="#{url};j=#{whichdb}"
       {
