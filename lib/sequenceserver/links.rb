@@ -111,9 +111,9 @@ module SequenceServer
       elsif type == 'gene'
       	url = "#{url}/Gene/Summary?db=core;g=#{accession}"
       elsif type == 'contig' || type == 'scaffold' || type == 'chromosome'
-      	subjstart = encode self.subjstart
-      	subjend = encode self.subjend
-        url = "#{url}/Location/View?r=#{accession}#{colon}#{subjstart}-#{subjend}"
+      	subjstart = subjstart < subjend ? encode self.subjstart : encode self.subjend;
+      	subjend = subjstart < subjend ? encode self.subjend : encode self.subjstart
+      	url = "#{url}/Location/View?r=#{accession}#{colon}#{subjstart}-#{subjend}"
       end
       #  url ="#{url};j=#{whichdb}"
       {
