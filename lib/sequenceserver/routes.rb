@@ -106,7 +106,7 @@ target="#{target}">)
 
     # Render the search form.
     get '/' do
-      @input_sequence = "test_seqACGTG"
+      @input_sequence = ""
       erb :search, :locals => { :databases => Database.group_by(&:type) }
     end
 
@@ -114,7 +114,8 @@ target="#{target}">)
     post '/' do
       if params[:input_sequence]
         # populate sequence textarea
-        erb :search, :locals => { :input_sequence => params[:input_sequence], :databases => Database.group_by(&:type) }
+        @input_sequence = params[:input_sequence]
+        erb :search, :locals => { :databases => Database.group_by(&:type) }
       else
         # BLAST search!
         erb :result, :locals => { :report => BLAST.run(params) }
