@@ -113,7 +113,7 @@ module SequenceServer
       elsif type == 'contig' || type == 'scaffold' || type == 'chromosome'
       	subjstart = encode self.subjstart
       	subjend = encode self.subjend
-      	if subjstart < subjend 
+      	if subjstart > subjend 
       	  subjend = encode self.subjstart
       	  subjstart = self.subjend
       	end
