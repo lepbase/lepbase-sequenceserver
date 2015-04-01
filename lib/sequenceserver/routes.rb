@@ -113,7 +113,7 @@ target="#{target}">)
     post '/' do
       if params[:input_sequence]
         # populate sequence textarea
-        erb :search, :locals => { :databases => Database.group_by(&:type) }
+        erb :search, :locals => { :input_sequence => params[:input_sequence], :databases => Database.group_by(&:type) }
       else
         # BLAST search!
         erb :result, :locals => { :report => BLAST.run(params) }
