@@ -109,9 +109,15 @@ target="#{target}">)
       erb :search, :locals => { :databases => Database.group_by(&:type) }
     end
 
-    # BLAST search!
+    
     post '/' do
-      erb :result, :locals => { :report => BLAST.run(params) }
+      if params[:input_sequence]
+        # populate sequence textarea
+        erb :search, :locals => { :databases => Database.group_by(&:type) }
+      else
+        # BLAST search!
+        erb :result, :locals => { :report => BLAST.run(params) }
+      end
     end
 
     # @params sequence_ids: whitespace separated list of sequence ids to
