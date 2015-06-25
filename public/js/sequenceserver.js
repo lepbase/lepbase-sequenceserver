@@ -3,6 +3,10 @@
  */
 $.webshims.polyfill('forms');
 
+
+/**
+ * Hack to allow toggle all for different sequence types
+ */
 $('#toggle_transcripts').click(function(event) {
   if(this.checked) {
       // Iterate each checkbox
@@ -10,6 +14,8 @@ $('#toggle_transcripts').click(function(event) {
           this.checked = true;
           $('.databases.protein input:checkbox').disable();
           $('.databases.protein .checkbox').addClass('disabled');
+          $('#toggle_proteins').disable();
+          $('#toggle_proteins').addClass('disabled');
       });
   }
   else {
@@ -17,6 +23,8 @@ $('#toggle_transcripts').click(function(event) {
           this.checked = false;
           $('.databases input:checkbox').enable();
           $('.databases .checkbox').removeClass('disabled');
+          $('#toggle_proteins').enable();
+          $('#toggle_proteins').removeClass('disabled');
       });
   }
 });
@@ -28,6 +36,8 @@ $('#toggle_scaffolds').click(function(event) {
           this.checked = true;
           $('.databases.protein input:checkbox').disable();
           $('.databases.protein .checkbox').addClass('disabled');
+          $('#toggle_proteins').disable();
+          $('#toggle_proteins').addClass('disabled');
       });
   }
   else {
@@ -35,6 +45,8 @@ $('#toggle_scaffolds').click(function(event) {
           this.checked = false;
           $('.databases input:checkbox').enable();
           $('.databases .checkbox').removeClass('disabled');
+          $('#toggle_proteins').enable();
+          $('#toggle_proteins').removeClass('disabled');
       });
   }
 });
@@ -46,6 +58,10 @@ $('#toggle_proteins').click(function(event) {
           this.checked = true;
           $('.databases.nucleotide input:checkbox').disable();
           $('.databases.nucleotide .checkbox').addClass('disabled');
+          $('#toggle_transcripts').disable();
+          $('#toggle_transcripts').addClass('disabled');
+          $('#toggle_scaffolds').disable();
+          $('#toggle_scaffolds').addClass('disabled');
       });
   }
   else {
@@ -53,6 +69,10 @@ $('#toggle_proteins').click(function(event) {
           this.checked = false;
           $('.databases input:checkbox').enable();
           $('.databases .checkbox').removeClass('disabled');
+          $('#toggle_transcripts').enable();
+          $('#toggle_transcripts').removeClass('disabled');
+          $('#toggle_scaffolds').enable();
+          $('#toggle_scaffolds').removeClass('disabled');
       });
   }
 });
