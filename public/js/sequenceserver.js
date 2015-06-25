@@ -8,11 +8,15 @@ $('#toggle_transcripts').click(function(event) {
       // Iterate each checkbox
       $('.transcripts').each(function() {
           this.checked = true;
+          $('.databases.protein input:checkbox').disable();
+          $('.databases.protein .checkbox').addClass('disabled');
       });
   }
   else {
     $('.transcripts').each(function() {
           this.checked = false;
+          $('.databases input:checkbox').enable();
+          $('.databases .checkbox').removeClass('disabled');
       });
   }
 });
@@ -22,11 +26,15 @@ $('#toggle_scaffolds').click(function(event) {
       // Iterate each checkbox
       $('.scaffolds').each(function() {
           this.checked = true;
+          $('.databases.protein input:checkbox').disable();
+          $('.databases.protein .checkbox').addClass('disabled');
       });
   }
   else {
     $('.scaffolds').each(function() {
           this.checked = false;
+          $('.databases input:checkbox').enable();
+          $('.databases .checkbox').removeClass('disabled');
       });
   }
 });
@@ -36,11 +44,15 @@ $('#toggle_proteins').click(function(event) {
       // Iterate each checkbox
       $('.proteins').each(function() {
           this.checked = true;
+          $('.databases.nucleotide input:checkbox').disable();
+          $('.databases.nucleotide .checkbox').addClass('disabled');
       });
   }
   else {
     $('.proteins').each(function() {
           this.checked = false;
+          $('.databases input:checkbox').enable();
+          $('.databases .checkbox').removeClass('disabled');
       });
   }
 });
@@ -125,7 +137,7 @@ $('#toggle_proteins').click(function(event) {
         this.finish().effect("bounce", {
             direction: 'left',
             distance: 24,
-            times: 4,
+            times: 0,
         }, 250);
     };
 
