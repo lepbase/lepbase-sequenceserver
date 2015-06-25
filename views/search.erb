@@ -204,7 +204,7 @@
                 <h4><%= type.capitalize %> databases</h4>
               </div>
               <% if type.include? "nucleotide" %>
-                <h5>Transcript:</h5>
+                <div><input type="checkbox" name="all_transcript"/><h5>All transcript databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">
@@ -222,6 +222,11 @@
                   <% end %>
                 <% end %>
               </ul>
+              <% if type.include? "nucleotide" %>
+                <div><input type="checkbox" name="all_scaffold"/><h5>All scaffold databases</h5></div>
+              <% else %>
+                <div><input type="checkbox" name="all_protein"/><h5>All protein databases</h5></div>
+              <% end %>
               <ul
                 class="list-group databases <%= type %>">
                 <% databases[type].sort_by(&:title).each do |database| %>
