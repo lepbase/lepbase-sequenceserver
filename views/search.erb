@@ -203,6 +203,9 @@
                 class="panel-heading">
                 <h4><%= type.capitalize %> databases</h4>
               </div>
+              <% if type.include? "nucleotide" %>
+                <h5>Transcript:</h5>
+              <% end %>
               <ul
                 class="list-group databases <%= type %>">
                 <% databases[type].sort_by(&:title).each do |database| %>
