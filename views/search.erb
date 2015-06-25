@@ -26,6 +26,15 @@
     <link rel="stylesheet" media="screen,print" type="text/css" href="css/font-awesome.min.css"/>
     <link rel="stylesheet" media="screen,print" type="text/css" href="css/custom.css"/>
   <% end %>
+  <script language="JavaScript">
+  function toggle(source,toggleclass) {
+    checkboxes = document.getElementsByClass(toggleclass);
+    for each(var checkbox in checkboxes){
+      checkbox.checked = source.checked;
+    }
+  }
+  </script>
+
 </head>
 
 <body>
@@ -190,13 +199,7 @@
         </div>
 
       </div>
-<script language="JavaScript">
-function toggle(source,toggleclass) {
-  checkboxes = document.getElementsByClass(toggleclass);
-  for each(var checkbox in checkboxes)
-    checkbox.checked = source.checked;
-}
-</script>
+
       <div
         class="form-group databases-container">
         <%# sort => same ordering of nucleotide and protein datbases %>
