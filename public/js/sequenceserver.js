@@ -4,10 +4,10 @@
 $.webshims.polyfill('forms');
 
 function toggle(source,toggleclass) {
-    checkboxes = document.getElementsByName(toggleclass);
+  /*  checkboxes = document.getElementsByName(toggleclass);
     for(var i=0, n=checkboxes.length;i<n;i++) {
       checkboxes[i].checked = source.checked;
-    }
+    }*/
   }
 
 /**
