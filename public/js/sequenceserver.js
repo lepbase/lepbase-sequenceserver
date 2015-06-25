@@ -17,6 +17,34 @@ $('#toggle_transcripts').click(function(event) {
   }
 });
 
+$('#toggle_scaffolds').click(function(event) {
+  if(this.checked) {
+      // Iterate each checkbox
+      $('.scaffolds').each(function() {
+          this.checked = true;
+      });
+  }
+  else {
+    $('.scaffolds').each(function() {
+          this.checked = false;
+      });
+  }
+});
+
+$('#toggle_proteins').click(function(event) {
+  if(this.checked) {
+      // Iterate each checkbox
+      $('.proteins').each(function() {
+          this.checked = true;
+      });
+  }
+  else {
+    $('.proteins').each(function() {
+          this.checked = false;
+      });
+  }
+});
+
 /**
  * Simple, small jQuery extensions for convenience.
  */

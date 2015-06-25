@@ -223,9 +223,9 @@
                 <% end %>
               </ul>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_scaffold"/></div><h5>All scaffold databases</h5></div>
+                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_scaffolds"/></div><h5>All scaffold databases</h5></div>
               <% else %>
-                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_protein"/></div><h5>All protein databases</h5></div>
+                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_proteins"/></div><h5>All protein databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">
@@ -235,7 +235,11 @@
                       <div
                         class="checkbox">
                         <label>
-                          <input type="checkbox" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
+                          <% if type.include? "nucleotide" %>
+                            <input type="checkbox" class="scaffolds" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
+                          <% else %>
+                            <input type="checkbox" class="proteins" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
+                          <% end %>
                           <%= database.title or database.name %>
                         </label>
                       </div>
