@@ -204,7 +204,7 @@
                 <h4><%= type.capitalize %> databases</h4>
               </div>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" onClick="toggle(this)"/></div><h5>All transcript databases</h5></div>
+                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div><h5>All transcript databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">

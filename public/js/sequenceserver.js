@@ -3,13 +3,19 @@
  */
 $.webshims.polyfill('forms');
 
-function toggle(source,toggleclass) {
-	alert('me')
-  /*  checkboxes = document.getElementsByName(toggleclass);
-    for(var i=0, n=checkboxes.length;i<n;i++) {
-      checkboxes[i].checked = source.checked;
-    }*/
+$('#toggle_transcripts').click(function(event) {
+  if(this.checked) {
+      // Iterate each checkbox
+      $('.transcripts').each(function() {
+          this.checked = true;
+      });
   }
+  else {
+    $('.transcripts').each(function() {
+          this.checked = false;
+      });
+  }
+});
 
 /**
  * Simple, small jQuery extensions for convenience.
