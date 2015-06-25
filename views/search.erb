@@ -190,7 +190,13 @@
         </div>
 
       </div>
-
+<script language="JavaScript">
+function toggle(source,toggleclass) {
+  checkboxes = document.getElementsByClass(toggleclass);
+  for each(var checkbox in checkboxes)
+    checkbox.checked = source.checked;
+}
+</script>
       <div
         class="form-group databases-container">
         <%# sort => same ordering of nucleotide and protein datbases %>
@@ -204,7 +210,7 @@
                 <h4><%= type.capitalize %> databases</h4>
               </div>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:10px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_transcript"/></div><h5>All transcript databases</h5></div>
+                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" onClick="toggle(this,'transcripts')"/></div><h5>All transcript databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">
@@ -214,7 +220,7 @@
                       <div
                         class="checkbox">
                         <label>
-                          <input type="checkbox" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
+                          <input type="checkbox" class="transcripts" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
                           <%= database.title or database.name %>
                         </label>
                       </div>
@@ -223,9 +229,9 @@
                 <% end %>
               </ul>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:10px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_scaffold"/></div><h5>All scaffold databases</h5></div>
+                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_scaffold"/></div><h5>All scaffold databases</h5></div>
               <% else %>
-                <div style="margin-top:10px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_protein"/></div><h5>All protein databases</h5></div>
+                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" name="all_protein"/></div><h5>All protein databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">
