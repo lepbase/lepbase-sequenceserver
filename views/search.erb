@@ -204,7 +204,7 @@
                 <h4><%= type.capitalize %> databases</h4>
               </div>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div><h5>All transcript databases</h5></div>
+                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div--><h5>Transcript databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">
@@ -223,9 +223,9 @@
                 <% end %>
               </ul>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_scaffolds"/></div><h5>All scaffold databases</h5></div>
+                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_scaffolds"/></div--><h5>Scaffold databases</h5></div>
               <% else %>
-                <div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_proteins"/></div><h5>All protein databases</h5></div>
+                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_proteins"/></div--><h5>Protein databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">

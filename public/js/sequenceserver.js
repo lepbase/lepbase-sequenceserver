@@ -6,7 +6,6 @@ $.webshims.polyfill('forms');
 
 /**
  * Hack to allow toggle all for different sequence types
- */
 $('#toggle_transcripts').click(function(event) {
   if(this.checked) {
       // Iterate each checkbox
@@ -79,6 +78,7 @@ $('#toggle_proteins').click(function(event) {
       $('#toggle_scaffolds').removeClass('disabled');
   }
 });
+ */
 
 /**
  * Simple, small jQuery extensions for convenience.
