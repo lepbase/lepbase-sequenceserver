@@ -18,7 +18,7 @@ $('#toggle_transcripts').click(function(event) {
       //$('.databases.protein .checkbox').addClass('disabled');
       $('.databases.protein input:checkbox').each(function(){
           if (this.checked == true){
-            this.trigger();
+            this.click();
           }
       });
       $('#toggle_proteins').disable();
@@ -29,8 +29,13 @@ $('#toggle_transcripts').click(function(event) {
           this.checked = false;
           
       });
-      $('.databases input:checkbox').enable();
-      $('.databases .checkbox').removeClass('disabled');
+      //$('.databases input:checkbox').enable();
+      //$('.databases .checkbox').removeClass('disabled');
+      $('.databases.protein input:checkbox').each(function(){
+          if (this.checked == false){
+            this.click();
+          }
+      });
       $('#toggle_proteins').enable();
       $('#toggle_proteins').removeClass('disabled');
   }
