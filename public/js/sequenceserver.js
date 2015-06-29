@@ -6,37 +6,24 @@ $.webshims.polyfill('forms');
 
 /**
  * Hack to allow toggle all for different sequence types
- */
-
 $('#toggle_transcripts').click(function(event) {
   if(this.checked) {
       // Iterate each checkbox
       $('.transcripts').each(function() {
           this.checked = true;
-          this.enable();
-          this.removeClass('disabled');
       });
-      //$('.databases.protein input:checkbox').disable();
-      //$('.databases.protein .checkbox').addClass('disabled');
-      $('.databases.protein input:checkbox').each(function(){
-          if (this.checked == true){
-            this.click();
-          }
-      });
+      $('.databases.protein input:checkbox').disable();
+      $('.databases.protein .checkbox').addClass('disabled');
       $('#toggle_proteins').disable();
       $('#toggle_proteins').addClass('disabled');
   }
   else {
     $('.transcripts').each(function() {
           this.checked = false;
+          
       });
-      //$('.databases input:checkbox').enable();
-      //$('.databases .checkbox').removeClass('disabled');
-      $('.databases.protein input:checkbox').each(function(){
-          if (this.checked == false){
-            this.click();
-          }
-      });
+      $('.databases input:checkbox').enable();
+      $('.databases .checkbox').removeClass('disabled');
       $('#toggle_proteins').enable();
       $('#toggle_proteins').removeClass('disabled');
   }
@@ -91,6 +78,7 @@ $('#toggle_proteins').click(function(event) {
       $('#toggle_scaffolds').removeClass('disabled');
   }
 });
+ */
 
 /**
  * Simple, small jQuery extensions for convenience.
