@@ -13,6 +13,8 @@ $('#toggle_transcripts').click(function(event) {
       // Iterate each checkbox
       $('.transcripts').each(function() {
           this.checked = true;
+          this.enable();
+          this.removeClass('disabled');
       });
       //$('.databases.protein input:checkbox').disable();
       //$('.databases.protein .checkbox').addClass('disabled');
@@ -27,7 +29,6 @@ $('#toggle_transcripts').click(function(event) {
   else {
     $('.transcripts').each(function() {
           this.checked = false;
-          
       });
       //$('.databases input:checkbox').enable();
       //$('.databases .checkbox').removeClass('disabled');
