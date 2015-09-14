@@ -8,7 +8,7 @@ module SequenceServer
     #
     alias_method :encode, :url_encode
 
-    ID_PATTERN = /(.+?)\|(.+?)\|(.+)/
+    TITLE_PATTERN = /(.+?_.+?_.+?).+?\s(\S)/
 #	aa|Bombyx_mori|NP_6723934.1
 #	cds|Bombyx_mori|NP_6723934.1
 #	transcript|Bombyx_mori|NP_6723934.1
@@ -96,10 +96,10 @@ module SequenceServer
     end
 
 	def lepbase
-      return nil unless id.match(ID_PATTERN)
+      return nil unless id.match(TITLE_PATTERN)
       assembly = Regexp.last_match[1]
       type = Regexp.last_match[2]
-      accession = Regexp.last_match[3]
+      accession = id
       assembly = encode assembly
       accession = encode accession
       colon = encode ':'
