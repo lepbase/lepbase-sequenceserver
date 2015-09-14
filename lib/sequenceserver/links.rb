@@ -96,7 +96,7 @@ module SequenceServer
     end
 
 	def lepbase
-      return nil unless id.match(TITLE_PATTERN)
+      return nil unless title.match(TITLE_PATTERN)
       assembly = Regexp.last_match[1]
       type = Regexp.last_match[2]
       accession = id
