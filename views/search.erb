@@ -204,12 +204,12 @@
                 <h4><%= type.capitalize %> databases</h4>
               </div>
               <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div--><h5>Transcript databases</h5></div>
+                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div--><h5>CDS databases</h5></div>
               <% end %>
               <ul
                 class="list-group databases <%= type %>">
                 <% databases[type].sort_by(&:title).each do |database| %>
-                  <% if database.title.include? "transcripts" or database.name.include? "transcripts" %>
+                  <% if database.title.include? "cds" or database.name.include? "cds" %>
                     <li class="list-group-item">
                       <div
                         class="checkbox">
@@ -230,7 +230,7 @@
               <ul
                 class="list-group databases <%= type %>">
                 <% databases[type].sort_by(&:title).each do |database| %>
-                  <% if !database.title.include? "transcripts" or !database.name.include? "transcripts" %>
+                  <% if !database.title.include? "cds" or !database.name.include? "cds" %>
                     <li class="list-group-item">
                       <div
                         class="checkbox">
