@@ -8,7 +8,7 @@ module SequenceServer
     #
     alias_method :encode, :url_encode
 
-    TITLE_PATTERN = /(.+?_.+?_.+?)_.+?\s(\S)/
+    TITLE_PATTERN = /(.+?_.+?_.+?)_.+?\s(\S+)/
 #	aa|Bombyx_mori|NP_6723934.1
 #	cds|Bombyx_mori|NP_6723934.1
 #	transcript|Bombyx_mori|NP_6723934.1
