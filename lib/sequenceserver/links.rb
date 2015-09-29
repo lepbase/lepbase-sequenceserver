@@ -160,7 +160,7 @@ module SequenceServer
       	  subjend = encode self.subjstart
       	  subjstart = self.subjend
       	end
-      url = "http://webapollo.lepbase.org/apollo/annotator/index.html?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
+      url = "http://webapollo.lepbase.org/apollo/annotator/loadLink?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
       
       {
         :order => 2,
