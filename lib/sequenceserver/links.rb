@@ -163,11 +163,11 @@ module SequenceServer
       url = "http://webapollo.lepbase.org/apollo/annotator/loadLink?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
       
       {
-        :order => 2,
+        :order => 3,
         :title => 'web apollo',
         :url   => url,
         :icon  => 'fa-external-link',
-        :img  => 'img/e-lepbase.png'
+        :img  => 'img/a-lepbase.png'
       }
     end
 
