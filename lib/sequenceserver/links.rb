@@ -129,6 +129,33 @@ module SequenceServer
       }
     end
 
+	def apollo
+      return nil unless title.match(TITLE_PATTERN)
+      return nil unless type == 'contig' || type == 'scaffold' || type == 'chromosome'
+      assembly = Regexp.last_match[1]
+      type = Regexp.last_match[2]
+      accession = id
+      assembly = encode assembly
+      accession = encode accession
+      colon = encode ':'
+      subjstart = encode self.subjstart
+      	subjend = encode self.subjend
+      	if subjstart > subjend 
+      	  subjend = encode self.subjstart
+      	  subjstart = self.subjend
+      	end
+      url = "http://webapollo.lepbase.org/apollo/annotator/index.html?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
+      
+      {
+        :order => 2,
+        :title => 'web apollo',
+        :url   => url,
+        :icon  => 'fa-external-link',
+        :img  => 'img/e-lepbase.png'
+      }
+    end
+
+
   end
 end
 
