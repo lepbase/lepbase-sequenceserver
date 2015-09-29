@@ -131,11 +131,24 @@ module SequenceServer
 
 	def apollo
 	  taxa = {}
-	  taxa.default = 16
-      taxa[:Bicyclus_anynana] = 16
-      taxid = 16
+	  taxa.default = 0
+      taxa[:Bicyclus_anynana_nBax0x1] = 16
+      taxa[:Bombyx_mori] = 29634
+      taxa[:Chilo_suppressalis_CsuOGS1x0] = 73098
+      taxa[:Danaus_plexippus] = 153579
+      taxa[:Heliconius_melpomene] = 166899
+      taxa[:Heliconius_melpomene_Hmel2] = 316443
+      taxa[:Lerema_accius_v1x1] = 172007
+      taxa[:Manduca_sexta_Msex_1x0] = 201997
+      taxa[:Melitaea_cinxia] = 222870
+      taxa[:Papilio_glaucus_v1x1] = 231133
+      taxa[:Pieris_napi_DAS5] = 275862
+      taxa[:Plodia_interpunctella_v1] = 304078
+      taxa[:Plutella_xylostella_DBM_FJ_v1x1] = 314622
       return nil unless title.match(TITLE_PATTERN)
       assembly = Regexp.last_match[1]
+      key = assembly.gsub('.','x')
+      taxid = taxa[key]
       type = Regexp.last_match[2]
       return nil unless type == 'contig' || type == 'scaffold' || type == 'chromosome'
       accession = id
