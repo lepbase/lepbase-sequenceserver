@@ -130,6 +130,10 @@ module SequenceServer
     end
 
 	def apollo
+	  taxa = {}
+	  taxa.default = 16
+      taxa[:Bicyclus_anynana] = 16
+      taxid = 16
       return nil unless title.match(TITLE_PATTERN)
       return nil unless type == 'contig' || type == 'scaffold' || type == 'chromosome'
       assembly = Regexp.last_match[1]
