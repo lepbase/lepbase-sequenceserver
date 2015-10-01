@@ -8,14 +8,7 @@ module SequenceServer
     #
     alias_method :encode, :url_encode
 
-    TITLE_PATTERN = /(.+?_.+?_.+?)_.+?\s(\S+)/
-#	aa|Bombyx_mori|NP_6723934.1
-#	cds|Bombyx_mori|NP_6723934.1
-#	transcript|Bombyx_mori|NP_6723934.1
-#	gene|Bombyx_mori|NM_6723934.1
-#	ctg|Bombyx_mori|ctg1
-#	scaf|Bombyx_mori|scaf1
-#	chr|Bombyx_mori|chr1
+    TITLE_PATTERN = /(\S+)\s(\S+)/
     # Link generators return a Hash like below.
     #
     # {
@@ -95,7 +88,7 @@ module SequenceServer
       }
     end
 
-	def lepbase
+    def lepbase
       return nil unless title.match(TITLE_PATTERN)
       assembly = Regexp.last_match[1]
       type = Regexp.last_match[2]
@@ -109,15 +102,15 @@ module SequenceServer
       elsif type == 'cds' || type == 'transcript'
         url = "#{url}/Transcript/Summary?db=core;t=#{accession}"
       elsif type == 'gene'
-      	url = "#{url}/Gene/Summary?db=core;g=#{accession}"
+        url = "#{url}/Gene/Summary?db=core;g=#{accession}"
       elsif type == 'contig' || type == 'scaffold' || type == 'chromosome'
-      	subjstart = encode self.subjstart
-      	subjend = encode self.subjend
-      	if subjstart > subjend 
-      	  subjend = encode self.subjstart
-      	  subjstart = self.subjend
-      	end
-      	url = "#{url}/Location/View?r=#{accession}#{colon}#{subjstart}-#{subjend}"
+        subjstart = encode self.subjstart
+        subjend = encode self.subjend
+        if subjstart > subjend 
+          subjend = encode self.subjstart
+          subjstart = self.subjend
+        end
+        url = "#{url}/Location/View?r=#{accession}#{colon}#{subjstart}-#{subjend}"
       end
       #  url ="#{url};j=#{whichdb}"
       {
@@ -129,40 +122,40 @@ module SequenceServer
       }
     end
 
-	def apollo
-	  taxa = {}
-	  taxa.default = 0
-      taxa["bicyclus_anynana_nba01"] = 3993118
-      taxa["bombyx_mori"] = 8023338
-      taxa["chilo_suppressalis_csuogs1"] = 8177422
-      taxa["danaus_plexippus"] = 8555660
-      taxa["heliconius_melpomene"] = 8555662
-      taxa["heliconius_melpomene_hmel2"] = 154377
-      taxa["lerema_accius_v1x1"] = 8568982
-      taxa["manduca_sexta_msex1"] = 8573293
-      taxa["melitaea_cinxia"] = 8616757
-      taxa["papilio_glaucus_v1x1"] = 155174
-      taxa["pieris_napi_DAS5"] = 9250926
-      taxa["plodia_interpunctella_v1"] = 8761949
-      taxa["plutella_xylostella_dbmfjv1x1"] = 8770212
-      taxa["Agraulis_vanillae_helico2"] = 398452
-      taxa["Eueides_tales_helico2"] = 2460429
-      taxa["Heliconius_besckei_helico2"] = 2990818
-      taxa["Heliconius_burneyi_helico2"] = 3367821
-      taxa["Heliconius_cydno_helico2"] = 3718864
-      taxa["Heliconius_demeter_helico2"] = 4022736
-      taxa["Heliconius_elevatus_helico2"] = 4313467
-      taxa["Heliconius_erato_helico2"] = 4439085
-      taxa["Heliconius_erato_himera_helico2"] = 4501982
-      taxa["Heliconius_hecale_helico1"] = 4589812
-      taxa["Heliconius_himera_helico1"] = 4685331
-      taxa["Heliconius_melpomene_helico2"] = 6808582
-      taxa["Heliconius_numata_helico2"] = 223205
-      taxa["Heliconius_pardalinus_helico2"] = 8869409
-      taxa["Heliconius_telesiphe_helico2"] = 938851
-      taxa["Heliconius_timareta_helico2"] = 6973228
-      taxa["Laparus_doris_helico2"] = 7235969
-      taxa["Neruda_aoede_helico2"] = 7923715
+    def apollo
+      taxa = {}
+      taxa.default = 0
+      taxa["agraulis_vanillae_helico2_core_27_80_1"] = 398452
+      taxa["bicyclus_anynana_nba01_core_27_80_1"] = 3993118
+      taxa["bombyx_mori_core_27_80_1"] = 8023338
+      taxa["chilo_suppressalis_csuogs1_core_27_80_1"] = 8177422
+      taxa["danaus_plexippus_core_27_80_1"] = 8555660
+      taxa["eueides_tales_helico2_core_27_80_1"] = 2460429
+      taxa["heliconius_besckei_helico2_core_27_80_1"] = 2990818
+      taxa["heliconius_burneyi_helico2_core_27_80_1"] = 3367821
+      taxa["heliconius_cydno_helico2_core_27_80_1"] = 3718864
+      taxa["heliconius_demeter_helico2_core_27_80_1"] = 4022736
+      taxa["heliconius_elevatus_helico2_core_27_80_1"] = 4313467
+      taxa["heliconius_erato_helico2_core_27_80_1"] = 4439085
+      taxa["heliconius_erato_himera_helico2_core_27_80_1"] = 4501982
+      taxa["heliconius_hecale_helico1_core_27_80_1"] = 4589812
+      taxa["heliconius_himera_helico1_core_27_80_1"] = 4685331
+      taxa["heliconius_melpomene_core_27_80_1"] = 8555662
+      taxa["heliconius_melpomene_helico2_core_27_80_1"] = 6808582
+      taxa["heliconius_melpomene_hmel2_core_27_80_1"] = 154377
+      taxa["heliconius_numata_helico2_core_27_80_1"] = 223205
+      taxa["heliconius_pardalinus_helico2_core_27_80_1"] = 8869409
+      taxa["heliconius_telesiphe_helico2_core_27_80_1"] = 938851
+      taxa["heliconius_timareta_helico2_core_27_80_1"] = 6973228
+      taxa["laparus_doris_helico2_core_27_80_1"] = 7235969
+      taxa["lerema_accius_v1x1_core_27_80_1"] = 8568982
+      taxa["manduca_sexta_msex1_core_27_80_1"] = 8573293
+      taxa["melitaea_cinxia_core_27_80_1"] = 8616757
+      taxa["neruda_aoede_helico2_core_27_80_1"] = 7923715
+      taxa["papilio_glaucus_v1x1_core_27_80_1"] = 155174
+      taxa["pieris_napi_das5_core_27_80_1"] = 9250926
+      taxa["plodia_interpunctella_v1_core_27_80_1"] = 8761949
+      taxa["plutella_xylostella_dbmfjv1x1_core_27_80_1"] = 8770212
 
       return nil unless title.match(TITLE_PATTERN)
       assembly = Regexp.last_match[1]
@@ -174,11 +167,11 @@ module SequenceServer
       accession = encode accession
       colon = encode ':'
       subjstart = encode self.subjstart
-      	subjend = encode self.subjend
-      	if subjstart > subjend 
-      	  subjend = encode self.subjstart
-      	  subjstart = self.subjend
-      	end
+        subjend = encode self.subjend
+        if subjstart > subjend 
+          subjend = encode self.subjstart
+          subjstart = self.subjend
+        end
       url = "http://webapollo.lepbase.org/apollo/annotator/loadLink?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
       
       {
