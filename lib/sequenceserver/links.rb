@@ -183,7 +183,7 @@ module SequenceServer
       
       {
         :order => 3,
-        :title => 'web apollo',
+        :title => 'webapollo',
         :url   => url,
         :icon  => 'fa-external-link',
         :img  => 'img/a-lepbase.png'
