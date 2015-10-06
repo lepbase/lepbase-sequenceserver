@@ -159,42 +159,65 @@ module SequenceServer
     def apollo
       taxa = {}
       taxa.default = 0
-      taxa["agraulis_vanillae_helico2_core_27_80_1"] = 398452
       taxa["bicyclus_anynana_nba01_core_27_80_1"] = 3993118
-      taxa["bombyx_mori_core_27_80_1"] = 8023338
-      taxa["chilo_suppressalis_csuogs1_core_27_80_1"] = 8177422
+      taxa["bombyx_mori_core_27_80_1"] = 9255869
+      taxa["chilo_suppressalis_csuogs1_core_27_80_1"] = 9741729
       taxa["danaus_plexippus_core_27_80_1"] = 8555660
-      taxa["eueides_tales_helico2_core_27_80_1"] = 2460429
-      taxa["heliconius_besckei_helico2_core_27_80_1"] = 2990818
-      taxa["heliconius_burneyi_helico2_core_27_80_1"] = 3367821
-      taxa["heliconius_cydno_helico2_core_27_80_1"] = 3718864
-      taxa["heliconius_demeter_helico2_core_27_80_1"] = 4022736
-      taxa["heliconius_elevatus_helico2_core_27_80_1"] = 4313467
-      taxa["heliconius_erato_helico2_core_27_80_1"] = 4439085
-      taxa["heliconius_erato_himera_helico2_core_27_80_1"] = 4501982
-      taxa["heliconius_hecale_helico1_core_27_80_1"] = 4589812
-      taxa["heliconius_himera_helico1_core_27_80_1"] = 4685331
       taxa["heliconius_melpomene_core_27_80_1"] = 8555662
-      taxa["heliconius_melpomene_helico2_core_27_80_1"] = 6808582
       taxa["heliconius_melpomene_hmel2_core_27_80_1"] = 154377
-      taxa["heliconius_numata_helico2_core_27_80_1"] = 223205
-      taxa["heliconius_pardalinus_helico2_core_27_80_1"] = 8869409
-      taxa["heliconius_telesiphe_helico2_core_27_80_1"] = 938851
-      taxa["heliconius_timareta_helico2_core_27_80_1"] = 6973228
-      taxa["laparus_doris_helico2_core_27_80_1"] = 7235969
       taxa["lerema_accius_v1x1_core_27_80_1"] = 8568982
       taxa["manduca_sexta_msex1_core_27_80_1"] = 8573293
       taxa["melitaea_cinxia_core_27_80_1"] = 8616757
-      taxa["neruda_aoede_helico2_core_27_80_1"] = 7923715
       taxa["papilio_glaucus_v1x1_core_27_80_1"] = 155174
       taxa["pieris_napi_das5_core_27_80_1"] = 9250926
       taxa["plodia_interpunctella_v1_core_27_80_1"] = 8761949
       taxa["plutella_xylostella_dbmfjv1x1_core_27_80_1"] = 8770212
 
+      taxa["agraulis_vanillae_helico2_core_27_80_1"] = 16
+      taxa["eueides_tales_helico2_core_27_80_1"] = 55999
+      taxa["heliconius_besckei_helico2_core_27_80_1"] = 84651
+      taxa["heliconius_burneyi_helico2_core_27_80_1"] = 146538
+      taxa["heliconius_cydno_helico2_core_27_80_1"] = 248612
+      taxa["heliconius_demeter_helico2_core_27_80_1"] = 302875
+      taxa["heliconius_elevatus_helico2_core_27_80_1"] = 2516986
+      taxa["heliconius_erato_helico2_core_27_80_1"] = 3225564
+      taxa["heliconius_erato_himera_helico2_core_27_80_1"] =3364677 
+      taxa["heliconius_hecale_helico1_core_27_80_1"] = 3502068
+      taxa["heliconius_himera_helico1_core_27_80_1"] = 5456852
+      taxa["heliconius_melpomene_helico2_core_27_80_1"] = 10548505
+      taxa["heliconius_numata_helico2_core_27_80_1"] = 5738932
+      taxa["heliconius_pardalinus_helico2_core_27_80_1"] = 5955216
+      taxa["heliconius_telesiphe_helico2_core_27_80_1"] = 6871724
+      taxa["heliconius_timareta_helico2_core_27_80_1"] = 8086780
+      taxa["laparus_doris_helico2_core_27_80_1"] = 7632519
+      taxa["neruda_aoede_helico2_core_27_80_1"] = 7288355
+
+      domain = {}
+      domain.default = "webapollo.lepbase.org"
+      # replace the following section with a regexp that looks for helico[12]
+      domain["agraulis_vanillae_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["eueides_tales_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_besckei_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_burneyi_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_cydno_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_demeter_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_elevatus_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_erato_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_erato_himera_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_hecale_helico1_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_himera_helico1_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_melpomene_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_numata_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_pardalinus_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_telesiphe_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["heliconius_timareta_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["laparus_doris_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
+      domain["neruda_aoede_helico2_core_27_80_1"] = "webapollodiscovar.lepbase.org"
       return nil unless title.match(TITLE_PATTERN)
       assembly = Regexp.last_match[1]
       type = Regexp.last_match[2]
       taxid = taxa[assembly]
+      domainurl = domain[assembly]
       return nil unless type == 'contig' || type == 'scaffold' || type == 'chromosome'
       accession = id
       assembly = encode assembly
@@ -206,7 +229,7 @@ module SequenceServer
         subjend = self.subjstart
         subjstart = self.subjend
       end
-      url = "http://webapollo.lepbase.org/apollo/annotator/loadLink?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
+      url = "http://#{domainurl}/apollo/annotator/loadLink?loc=#{accession}#{colon}#{subjstart}..#{subjend}&organism=#{taxid}&tracks=mRNA"
       
       {
         :order => 3,
