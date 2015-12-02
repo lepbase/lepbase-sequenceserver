@@ -9,7 +9,7 @@ module SequenceServer
     alias_method :encode, :url_encode
 
     TITLE_PATTERN = /(\S+)\s(\S+)/
-    ID_PATTERN = /lcl\|(.+?)\|(.+?)\|(.+)/
+    ID_PATTERN = /(.+?)\|(.+?)\|(.+)/
     # Link generators return a Hash like below.
     #
     # {
