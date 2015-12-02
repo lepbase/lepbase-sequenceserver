@@ -9,6 +9,7 @@ module SequenceServer
     alias_method :encode, :url_encode
 
     TITLE_PATTERN = /(\S+)\s(\S+)/
+    ID_PATTERN = /lcl\|(.+?)\|(.+?)\|(.+)/
     # Link generators return a Hash like below.
     #
     # {
@@ -123,10 +124,16 @@ module SequenceServer
       taxa["plodia_interpunctella_v1_core_27_80_1"] = "Plodia_interpunctella_v1"
       taxa["plutella_xylostella_dbmfjv1x1_core_27_80_1"] = "Plutella_xylostella_dbmfjv1x1"
 
-      return nil unless title.match(TITLE_PATTERN)
-      assembly = Regexp.last_match[1]
-      type = Regexp.last_match[2]
-      accession = id
+      if title.match(TITLE_PATTERN)
+        assembly = Regexp.last_match[1]
+        type = Regexp.last_match[2]
+        accession = id
+      elsif id.match(ID_PATTERN)
+        assembly = Regexp.last_match[1]
+        type = Regexp.last_match[2]
+        accession = Regexp.last_match[3]
+      end
+      return nil unless accession
       assembly = encode taxa[assembly]
       accession = encode accession
       colon = ':'
@@ -191,12 +198,18 @@ module SequenceServer
       taxa["plodia_interpunctella_v1_core_27_80_1"] = 8761949
       taxa["plutella_xylostella_dbmfjv1x1_core_27_80_1"] = 8770212
 
-      return nil unless title.match(TITLE_PATTERN)
-      assembly = Regexp.last_match[1]
-      type = Regexp.last_match[2]
+      if title.match(TITLE_PATTERN)
+        assembly = Regexp.last_match[1]
+        type = Regexp.last_match[2]
+        accession = id
+      elsif id.match(ID_PATTERN)
+        assembly = Regexp.last_match[1]
+        type = Regexp.last_match[2]
+        accession = Regexp.last_match[3]
+      end
+      return nil unless accession
       taxid = taxa[assembly]
       return nil unless type == 'contig' || type == 'scaffold' || type == 'chromosome'
-      accession = id
       assembly = encode assembly
       accession = encode accession
       colon = ':'
