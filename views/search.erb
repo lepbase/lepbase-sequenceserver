@@ -42,6 +42,25 @@
     ga('send', 'pageview');
 
   </script>
+  <script>
+    $(function () { 
+    	$('#nucleotide')
+    	.jstree({
+			"plugins" : [ "checkbox", "search", "sort", "types" ]
+		})
+		
+		/*var to = false;
+  		$('#html1_q').keyup(function () {
+    		if(to) { clearTimeout(to); }
+    		to = setTimeout(function () {
+				var v = $('#html1_q').val();
+				$('#html1').jstree(true).search(v);
+    		}, 250);
+  		});*/
+		
+		
+	  });
+  </script>
   <div
     class="navbar">
     <div
