@@ -834,55 +834,56 @@ $(document).ready(function(){
         // show activity spinner
         $('#spinner').modal();
 
-        // BLAST now
-        e.preventDefault()
-    	var $this = $(this)
-    	var data = ($(this).serialize() + '&method=' + $('#method').val());
+        // add hidden fields to form
         $('#nucleotide').jstree("get_selected").each(function(index,value){
-        	data += '&'+$('#'+value).attr('name')+'='+$('#'+value).attr('value');
+        	$('<input />').attr('type', 'hidden')
+          		.attr('name', $('#'+value).attr('name'))
+          		.attr('value', $('#'+value).attr('value'))
+          		.appendTo('#blast');
         });
-        $.ajax(url,{
-       		post: $this.attr('action'),
-       		data: data,
-       		success: function (data) {
-            	// BLASTed successfully
-	
-	            // display the result
-	            $('.result').html(data).show();
-	
-   	         // affix sidebar
-   	         var $sidebar = $('.sidebar');
-   	         if ($sidebar.length !== 0) {
-   	             $sidebar.affix({
-   	                 offset: {
-   	                     top: $sidebar.offset().top
-   	                 }
-   	             })
-   	             .width($sidebar.width());
-   	         }
-	
-	            //jump to the results
-   	         location.hash = hash;	
-	
-    	        SS.generateGraphicalOverview();	
+        // BLAST now
+        
+        //var data = ($(this).serialize() + '&method=' + $('#method').val());
+        var data = ($(this).serialize() + '&method=' + $('#method').val());
+        
+        $.post(url, data).
+          done(function (data) {
+            // BLASTed successfully
 
-	            SS.updateDownloadFastaOfAllLink();
-   	         SS.updateDownloadFastaOfSelectedLink();
-   	         SS.updateSequenceViewerLinks();
-   	         SS.setupTooltips();
-   	         SS.setupDownloadLinks();
+            // display the result
+            $('.result').html(data).show();
 
-	            $('body').scrollspy({target: '.sidebar'});
-	
-    	        $('#spinner').modal('hide');
-
-	        }
-	        error: function (jqXHR, status, error) {
-            	SS.showErrorModal(jqXHR, function () {
-            	    $('#spinner').modal('hide');
-            	});
+            // affix sidebar
+            var $sidebar = $('.sidebar');
+            if ($sidebar.length !== 0) {
+                $sidebar.affix({
+                    offset: {
+                        top: $sidebar.offset().top
+                    }
+                })
+                .width($sidebar.width());
             }
-            
+
+            //jump to the results
+            location.hash = hash;
+
+            SS.generateGraphicalOverview();
+
+            SS.updateDownloadFastaOfAllLink();
+            SS.updateDownloadFastaOfSelectedLink();
+            SS.updateSequenceViewerLinks();
+            SS.setupTooltips();
+            SS.setupDownloadLinks();
+
+            $('body').scrollspy({target: '.sidebar'});
+
+            $('#spinner').modal('hide');
+
+        }).
+          fail(function (jqXHR, status, error) {
+            SS.showErrorModal(jqXHR, function () {
+                $('#spinner').modal('hide');
+            });
         });
 
         return false;
