@@ -7,9 +7,8 @@ module SequenceServer
     end
     
   	def parents
-      {
-        :default => 'Lepidoptera',
-  	    'agraulis' => 'Butterflies',
+      par = {
+        'agraulis' => 'Butterflies',
   	    'bicyclus' => 'Butterflies',
   	    'bombyx' => 'Moths',
   	    'chilo' => 'Moths',
@@ -26,6 +25,8 @@ module SequenceServer
   	    'plodia' => 'Moths',
   	    'plutella' => 'Moths'
   	  }
+  	  par.default = 'Lepidoptera'
+  	  return par
     end
     
     def nesting(name)
