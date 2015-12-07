@@ -30,7 +30,12 @@ module SequenceServer
     end
     
     def nesting(name)
-      parents[name]
+      arr = []
+      until name == 'Lepidoptera'
+        arr << name
+        name = parents[name]
+      end
+      return arr
     end
     
   end
