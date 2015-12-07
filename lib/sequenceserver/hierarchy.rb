@@ -1,32 +1,33 @@
 module SequenceServer
   # Module to contain methods for dealing with taxonomic hierarchy.
-  Hierarchy = Struct.new(:parents,:root) do
-
-    def parents
-        {
-          :default => 'Lepidoptera',
-          :Agraulis => 'Butterflies',
-    	    :Bicyclus => 'Butterflies',
-    	    :Bombyx => 'Moths',
-    	    :Chilo => 'Moths',
-    	    :Danaus => 'Butterflies',
-    	    :Eueides => 'Butterflies',
-    	    :Heliconius => 'Butterflies',
-    	    :Laparus => 'Butterflies',
-    	    :Lerema => 'Butterflies',
-    	    :Manduca => 'Moths',
-    	    :Melitaea => 'Butterflies',
-    	    :Neruda => 'Butterflies',
-    	    :Papilio => 'Butterflies',
-    	    :Pieris => 'Butterflies',
-    	    :Plodia => 'Moths',
-    	    :Plutella => 'Moths'
-    	  }
-      end
-
-      def root
-        'Lepidoptera'
-      end
+  module Hierarchy
+  
+  	def parents
+      {
+        :default => 'Lepidoptera',
+        :Agraulis => 'Butterflies',
+  	    :Bicyclus => 'Butterflies',
+  	    :Bombyx => 'Moths',
+  	    :Chilo => 'Moths',
+  	    :Danaus => 'Butterflies',
+  	    :Eueides => 'Butterflies',
+  	    :Heliconius => 'Butterflies',
+  	    :Laparus => 'Butterflies',
+  	    :Lerema => 'Butterflies',
+  	    :Manduca => 'Moths',
+  	    :Melitaea => 'Butterflies',
+  	    :Neruda => 'Butterflies',
+  	    :Papilio => 'Butterflies',
+  	    :Pieris => 'Butterflies',
+  	    :Plodia => 'Moths',
+  	    :Plutella => 'Moths'
+  	  }
     end
+    
+    def root
+      'Lepidoptera'
+    end
+    
   end
 end
+
