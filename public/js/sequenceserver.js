@@ -835,12 +835,15 @@ $(document).ready(function(){
         $('#spinner').modal();
 
         // add hidden fields to form
-        $('#nucleotide').jstree("get_selected").each(function(index,value){
-        	$('<input />').attr('type', 'hidden')
-          		.attr('name', $('#'+value).attr('name'))
-          		.attr('value', $('#'+value).attr('value'))
-          		.appendTo('#blast');
-        });
+        var ids = $('#nucleotide').jstree("get_selected");
+        console.log(ids);
+		for (i = 0; i < ids.length; ids++){
+			$('<input />').attr('type', 'hidden')
+				.attr('name', $('#'+ids[i]).attr('name'))
+				.attr('value', $('#'+ids[i]).attr('value'))
+				.appendTo('#blast');
+		}
+
         // BLAST now
         
         //var data = ($(this).serialize() + '&method=' + $('#method').val());
