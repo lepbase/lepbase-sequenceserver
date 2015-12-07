@@ -25,13 +25,13 @@ module SequenceServer
   	    'plodia' => 'Moths',
   	    'plutella' => 'Moths'
   	  }
-  	  par.default = 'Lepidoptera'
+  	  par.default = @root
   	  return par
     end
     
     def nesting(name)
       arr = [name]
-      until name == 'Lepidoptera'
+      until name == @root
         name = parents[name]
         arr << name
       end
