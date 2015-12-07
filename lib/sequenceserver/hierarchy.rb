@@ -25,7 +25,7 @@ module SequenceServer
     end
     
     def root
-      'Lepidoptera';
+      'Lepidoptera'
     end
     
   end
