@@ -76,6 +76,9 @@ module.exports = function (grunt) {
                             // d3 - for visualisation.
                             'public/js/d3.v3.min.js',
 
+                            // jstree - for hierarchical db display.
+                            'public/js/jstree.min.js',
+
                             // Our stuff.
                             'public/js/sequence.js',
                             'public/js/sequenceserver.js',
