@@ -9,7 +9,7 @@ module SequenceServer
   	def parents
       {
         :default => 'Lepidoptera',
-        'agraulis' => 'Butterflies',
+  	    'agraulis' => 'Butterflies',
   	    'bicyclus' => 'Butterflies',
   	    'bombyx' => 'Moths',
   	    'chilo' => 'Moths',
@@ -28,6 +28,9 @@ module SequenceServer
   	  }
     end
     
+    def nesting(name, parents)
+      parents[name]
+    end
     
   end
 end
