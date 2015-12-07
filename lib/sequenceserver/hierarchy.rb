@@ -1,6 +1,6 @@
 module SequenceServer
   # Module to contain methods for dealing with taxonomic hierarchy.
-  module Hierarchy
+  class Hierarchy
   
     def initialize (root = 'Lepidoptera')
       @root = root;
