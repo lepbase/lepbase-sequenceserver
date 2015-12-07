@@ -108,7 +108,7 @@ target="#{target}">)
     get '/' do
       @input_sequence = ""
       erb :search, :locals => { :databases => Database.group_by(&:type),
-                                :root => Hierarchy.root }
+                                :hierarchy => Hierarchy.new }
     end
 
     
