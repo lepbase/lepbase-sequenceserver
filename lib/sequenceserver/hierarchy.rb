@@ -28,7 +28,7 @@ module SequenceServer
   	  }
     end
     
-    def nesting(name, parents)
+    def nesting(name)
       parents[name]
     end
     
