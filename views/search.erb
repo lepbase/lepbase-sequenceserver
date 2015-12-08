@@ -209,6 +209,7 @@
                 <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div--><h5>CDS databases</h5></div>
               <% end %>
               <div id="<%= type %>">
+             <%= hierarchy.nested_list(databases[type].sort_by(&:title)) %>
               <ul>
                 <% databases[type].sort_by(&:title).each do |database| %>
                   <li
