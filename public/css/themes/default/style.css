@@ -1045,6 +1045,7 @@
     background-color: transparent;
     background-image: none;
     background-position: 0 0;
+    background-size: contain;
   }
   .jstree-default-responsive .jstree-file {
     background: url("40px.png") 0 -160px no-repeat;

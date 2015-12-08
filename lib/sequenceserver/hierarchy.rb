@@ -38,10 +38,11 @@ module SequenceServer
       return arr
     end
     
-    def nested_list(databases)
+    def nested_list(databases,suffix = '')
       hash = {}
       databases.each do |database|
         title = database.title or database.name
+        #next if title.split.last.match(suffix)
         name = title.split.first.capitalize
         levels = nesting(name)
         parent = 'root'
@@ -60,19 +61,31 @@ module SequenceServer
       end
       return hash
     end
-    
-    def ul(databases)
-      hash = nested_list(databases)
-    #  hash['root'].each do |level|
-    #    puts key
-    #    value.each do |k,v|
-    #      puts k
-    #      puts v
-    #    end
-    #  end
-      return hash
+
+    def ul(databases,suffix = '')
+      hash = nested_list(databases,suffix)
+      html = enlist(hash,'root')
+      return html
     end
-    
+
+    def enlist(hash,parent)
+      html = '<ul>'
+      hash[parent].each do |key,value|
+        html += '<li'
+        if value['internal']
+          html += '>'+key
+        else
+          html += 'name="databases[]" value="'+value.db+'" data-type="'+value.type+'">'+key
+        end
+        if value['internal']
+          html += enlist(hash,key)
+        end
+        html += '</li>'
+      end
+      html += '</ul>'
+      return html
+    end
+
   end
 end
 
