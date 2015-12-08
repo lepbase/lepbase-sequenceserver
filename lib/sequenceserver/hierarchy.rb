@@ -2,7 +2,7 @@ module SequenceServer
   # Module to contain methods for dealing with taxonomic hierarchy.
   class Hierarchy
   
-    def initialize (root = 'Lepidoptera')
+  	def initialize (root = 'Lepidoptera')
     	@root = root
     end
     
@@ -41,27 +41,28 @@ module SequenceServer
     def nested_list(databases)
       hash = {}
       databases.each do |database|
-      	title = database.title or database.name
+        title = database.title or database.name
         name = title.split.first.capitalize
-        type = database.type
         levels = nesting(name)
         parent = 'root'
         levels.each do |level|
-          hash[parent] ||= []
+          hash[parent] ||= {}
           if level == name
-            db = database.id
+            hash[parent][title] ||= {}
+            hash[parent][title]['db'] = database.id
+            hash[parent][title]['type'] = database.type
           else
-            db = false
+            hash[parent][level] ||= {}
+            hash[parent][level]['internal'] = 1;
           end
-          hash[parent].push {:name => level, :db => db, :type => type}
           parent = level
         end
       end
       return hash
     end
     
-    #def ul(databases)
-    #  hash = nested_list(databases)
+    def ul(databases)
+      hash = nested_list(databases)
     #  hash['root'].each do |level|
     #    puts key
     #    value.each do |k,v|
@@ -69,8 +70,8 @@ module SequenceServer
     #      puts v
     #    end
     #  end
-    #  return hash
-    #end
+      return hash
+    end
     
   end
 end
