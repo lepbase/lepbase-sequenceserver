@@ -42,7 +42,8 @@ module SequenceServer
       hash = {}
       databases.each do |database|
         title = database.title or database.name
-        #next if title.split.last.match(suffix)
+        next unless title.split.last.match(suffix)
+        title.sub ' - '+suffix ''
         name = title.split.first.capitalize
         levels = nesting(name)
         parent = 'root'

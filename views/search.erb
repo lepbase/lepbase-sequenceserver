@@ -485,10 +485,10 @@
 			"plugins" : [ "checkbox", "search", "sort", "types" ]
 		})
 		
-	    var to = false;
+	    var tto = false;
   		$('#transcripts_q').keyup(function () {
-    		if(to) { clearTimeout(to); }
-    		to = setTimeout(function () {
+    		if(tto) { clearTimeout(tto); }
+    		tto = setTimeout(function () {
 				var v = $('#transcripts_q').val();
 				$('#transcripts').jstree(true).search(v);
     		}, 250);
@@ -499,10 +499,28 @@
 			"plugins" : [ "checkbox", "search", "sort", "types" ]
 		})
 		
+		var sto = false;
+  		$('#scaffolds_q').keyup(function () {
+    		if(sto) { clearTimeout(sto); }
+    		sto = setTimeout(function () {
+				var v = $('#scaffolds_q').val();
+				$('#scaffolds').jstree(true).search(v);
+    		}, 250);
+  		});
+		
 		$('#proteins')
     	.jstree({
 			"plugins" : [ "checkbox", "search", "sort", "types" ]
 		})
+		
+		var pto = false;
+  		$('#proteins_q').keyup(function () {
+    		if(pto) { clearTimeout(pto); }
+    		pto = setTimeout(function () {
+				var v = $('#proteins_q').val();
+				$('#proteins').jstree(true).search(v);
+    		}, 250);
+  		});
 		
 	  });
   </script>
