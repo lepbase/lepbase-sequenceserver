@@ -75,7 +75,7 @@ module SequenceServer
         if value['internal']
           html += '>'+key
         else
-          html += 'name="databases[]" value="'+value.db+'" data-type="'+value.type+'">'+key
+          html += 'name="databases[]" value="'+value['db']+'" data-type="'+value['type']+'">'+key
         end
         if value['internal']
           html += enlist(hash,key)
