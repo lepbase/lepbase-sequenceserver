@@ -65,15 +65,19 @@ module SequenceServer
 
     def ul(databases,suffix = '')
       hash = nested_list(databases,suffix)
-      html = enlist(hash,'root')
+      html = enlist(hash,'root',suffix)
       return html
     end
 
-    def enlist(hash,parent)
+    def enlist(hash,parent,suffix)
       html = '<ul>'
       hash[parent].each do |key,value|
-        html += '<li'
-        html += ' class="jstree-open"' if parent == 'root'
+        html += '<li class="'+suffix+'-node'
+        if parent == 'root'
+        	html += ' jstree-open"'
+        else
+        	html += '"'
+        end
         if value['internal']
           html += '>'+key
         else
