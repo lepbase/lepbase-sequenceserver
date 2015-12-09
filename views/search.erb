@@ -210,12 +210,13 @@
                 <input id="transcripts_q"/>
                 <div id="transcripts">
               	<%= hierarchy.ul(databases[type],'transcripts') %>
-              	
+              	</div>
         
               	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
                 <input id="scaffolds_q"/>
                 <div id="scaffolds">
               	<%= hierarchy.ul(databases[type],'scaffolds') %>
+              	</div>
               	
               	
               <% else %>
@@ -223,6 +224,7 @@
                 <input id="proteins_q"/>
                 <div id="proteins">
               	<%= hierarchy.ul(databases[type],'proteins') %>
+              	</div>
               <% end %>
             </div>
           </div>
