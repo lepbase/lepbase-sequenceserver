@@ -73,7 +73,7 @@ module SequenceServer
       html = '<ul>'
       hash[parent].each do |key,value|
         html += '<li'
-        html += ' class="open"' if parent == 'root'
+        html += ' class="open"' if parent == @root
         if value['internal']
           html += '>'+key
         else
