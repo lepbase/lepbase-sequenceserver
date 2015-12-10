@@ -714,19 +714,19 @@ $(document).ready(function(){
                 $('.nucleotide .jstree-node').each(function(){
 					$(this).closest('div').jstree('disable_node',this.id);
 				});
-				$('input.nucleotide').attr('disabled',"true");
+				$('input.nucleotide').attr('disabled');
                 break;
             case 'nucleotide':
                 $('.protein .jstree-node').each(function(){
 					$(this).closest('div').jstree('disable_node',this.id);
 				});
-				$('input.protein').attr('disabled',"true");
+				$('input.protein').attr('disabled');
                 break;
             default:
                 $('.jstree-node').each(function(){
 					$(this).closest('div').jstree('enable_node',this.id);
 				});
-				$('input').attr('disabled',"false");
+				$('input')..removeAttr('disabled');
                 break;
         }
     });
