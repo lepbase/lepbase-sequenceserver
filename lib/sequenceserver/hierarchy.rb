@@ -55,6 +55,7 @@ module SequenceServer
             hash[parent][title]['type'] = database.type
           else
             hash[parent][level] ||= {}
+            hash[parent][level]['type'] = database.type
             hash[parent][level]['internal'] = 1;
           end
           parent = level
