@@ -836,8 +836,8 @@ $(document).ready(function(){
 
         // add hidden fields to form
         var ids = $('#transcripts').jstree("get_selected")
-                  .concat($('#scaffolds').jstree("get_selected")
-                  .concat($('#proteins').jstree("get_selected");
+                  .concat($('#scaffolds').jstree("get_selected"))
+                  .concat($('#proteins').jstree("get_selected"));
         
         for (i = 0; i < ids.length; ids++){
 			$('<input />').attr('type', 'hidden')
