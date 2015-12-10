@@ -75,7 +75,7 @@ SS.blast = (function () {
 
     /* */
     var type_of_databases = function () {
-    	type = undefined
+    	type = false
 		$('.treediv').each(function(){
 			if (type = $('#'+$(this).jstree(true).get_selected()[0]).attr('data-type')){
 				return false;
@@ -95,7 +95,7 @@ SS.blast = (function () {
         }
 
         // must select atleast one database
-        type = undefined
+        type = false
 		$('.treediv').each(function(){
 			if (type = $('#'+$(this).jstree(true).get_selected()[0]).attr('data-type')){
 				return false;
