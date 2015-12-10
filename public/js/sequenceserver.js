@@ -846,10 +846,12 @@ $(document).ready(function(){
                   .concat($('#proteins').jstree("get_selected"));
         
         ids.forEach(function(id,i){
-			$('<input />').attr('type', 'hidden')
-				.attr('name', $('#'+id).attr('name'))
-				.attr('value', $('#'+id).attr('value'))
-				.appendTo('#blast');
+        	if ($('#'+id).attr('value')){
+				$('<input />').attr('type', 'hidden')
+					.attr('name', $('#'+id).attr('name'))
+					.attr('value', $('#'+id).attr('value'))
+					.appendTo('#blast');
+			}
 		});
 
         // BLAST now
