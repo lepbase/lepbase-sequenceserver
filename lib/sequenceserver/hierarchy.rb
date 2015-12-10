@@ -80,7 +80,7 @@ module SequenceServer
         	html += '"'
         end
         if value['internal']
-          html += ' data-type="'+value['type']+'>'+key
+          html += ' data-type="'+value['type']+'">'+key
         else
           html += ' name="databases[]" value="'+value['db']+'" data-type="'+value['type']+'">'+key
         end
