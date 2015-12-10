@@ -193,43 +193,6 @@
 
       </div>
 
-      <div
-        class="form-group databases-container">
-        <%# sort => same ordering of nucleotide and protein datbases %>
-        <% databases.keys.sort.each do |type| %>
-          <div
-            class="<%= databases[(databases.keys - [type]).first] ? 'col-md-6' : 'col-md-12' %>">
-            <div
-              class="panel panel-default">
-              <div
-                class="panel-heading">
-                <h4><%= type.capitalize %> databases</h4>
-              </div>
-              <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><h5>CDS databases</h5></div>
-                <input id="transcripts_q" class="transcripts"/>
-                <div id="transcripts" class="treediv">
-              	<%= hierarchy.ul(databases[type],'transcripts') %>
-              	</div>
-        
-              	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
-                <input id="scaffolds_q" class="scaffolds"/>
-                <div id="scaffolds" class="treediv">
-              	<%= hierarchy.ul(databases[type],'scaffolds') %>
-              	</div>
-              	
-              	
-              <% else %>
-                <!--div style="margin-top:20px"><h5>Protein databases</h5></div-->
-                <input id="proteins_q" class="proteins"/>
-                <div id="proteins" class="treediv">
-              	<%= hierarchy.ul(databases[type],'proteins') %>
-              	</div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
 
       <div
         class="form-group">
@@ -276,6 +239,45 @@
           </div>
         </div>
       </div>
+      
+      <div
+        class="form-group databases-container">
+        <%# sort => same ordering of nucleotide and protein datbases %>
+        <% databases.keys.sort.each do |type| %>
+          <div
+            class="<%= databases[(databases.keys - [type]).first] ? 'col-md-6' : 'col-md-12' %>">
+            <div
+              class="panel panel-default">
+              <div
+                class="panel-heading">
+                <h4><%= type.capitalize %> databases</h4>
+              </div>
+              <% if type.include? "nucleotide" %>
+                <div style="margin-top:20px"><h5>CDS databases</h5></div>
+                <input id="transcripts_q" class="nucleotide transcripts"/>
+                <div id="transcripts" class="nucleotide treediv">
+              	<%= hierarchy.ul(databases[type],'transcripts') %>
+              	</div>
+        
+              	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
+                <input id="scaffolds_q" class="nucleotide scaffolds"/>
+                <div id="scaffolds" class="nucleotide treediv">
+              	<%= hierarchy.ul(databases[type],'scaffolds') %>
+              	</div>
+              	
+              	
+              <% else %>
+                <!--div style="margin-top:20px"><h5>Protein databases</h5></div-->
+                <input id="proteins_q" class="protein proteins"/>
+                <div id="proteins" class="protein treediv">
+              	<%= hierarchy.ul(databases[type],'proteins') %>
+              	</div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
     </form>
 
     <div
