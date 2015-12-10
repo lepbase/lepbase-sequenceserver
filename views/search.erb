@@ -517,12 +517,6 @@
 			"plugins" : [ "checkbox", "search", "sort", "types" ],
 			"themes" : { "icons": false }
 		})
-		.bind('loaded.jstree', function(e, data) {
-    		// invoked after jstree has loaded
-    		//setTimeout(function () {
-				SS.blast.init();
-    		//}, 1000);
-		})
 		
 		var pto = false;
   		$('#proteins_q').keyup(function () {
@@ -532,6 +526,10 @@
 				$('#proteins').jstree(true).search(v);
     		}, 250);
   		});
+  		
+  		setTimeout(function () {
+				SS.blast.init();
+    		}, 1000);
 		
 	  });
   </script>
