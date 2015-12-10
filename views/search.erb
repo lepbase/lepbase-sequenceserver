@@ -458,11 +458,11 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/webshims/polyfiller.js"></script>
     <script type="text/javascript" src="js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/jstree.min.js"></script>
     <script type="text/javascript" src="js/sequenceserver.js"></script>
     <script type="text/javascript" src="js/sequenceserver.blast.js"></script>
     <script type="text/javascript" src="js/jquery.t.js"></script>
     <script type="text/javascript" src="js/sequence.js"></script>
-    <script type="text/javascript" src="js/jstree.min.js"></script>
   <% end %>
   
   <script>
@@ -516,6 +516,10 @@
     	.jstree({
 			"plugins" : [ "checkbox", "search", "sort", "types" ],
 			"themes" : { "icons": false }
+		})
+		.bind('loaded.jstree', function(e, data) {
+    		// invoked after jstree has loaded
+    		SS.blast.init();
 		})
 		
 		var pto = false;
