@@ -839,12 +839,12 @@ $(document).ready(function(){
                   .concat($('#scaffolds').jstree("get_selected"))
                   .concat($('#proteins').jstree("get_selected"));
         
-        for (i = 0; i < ids.length; ids++){
+        ids.forEach(function(id,i){
 			$('<input />').attr('type', 'hidden')
-				.attr('name', $('#'+ids[i]).attr('name'))
-				.attr('value', $('#'+ids[i]).attr('value'))
+				.attr('name', $('#'+id).attr('name'))
+				.attr('value', $('#'+id).attr('value'))
 				.appendTo('#blast');
-		}
+		});
 
         // BLAST now
         
