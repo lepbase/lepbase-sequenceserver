@@ -75,7 +75,14 @@ SS.blast = (function () {
 
     /* */
     var type_of_databases = function () {
-        return $('.databases input:checked').data('type');
+    	type = undefined
+		$('.treediv').each(function(){
+			if (type = $('#'+$(this).jstree(true).get_selected()[0]).attr('data-type')){
+				return false;
+			}
+		});
+		return type;
+        //return $('.databases input:checked').data('type');
     };
 
     /*
@@ -88,10 +95,19 @@ SS.blast = (function () {
         }
 
         // must select atleast one database
-        if (!$('.databases input:checked').val()) {
+        type = undefined
+		$('.treediv').each(function(){
+			if (type = $('#'+$(this).jstree(true).get_selected()[0]).attr('data-type')){
+				return false;
+			}
+		});
+        if (!type) {
             return false;
         }
-
+        //if (!$('.databases input:checked').val()) {
+        //    return false;
+        //}
+        
         // everything good
         return true;
     };

@@ -835,9 +835,11 @@ $(document).ready(function(){
         $('#spinner').modal();
 
         // add hidden fields to form
-        var ids = $('#nucleotide').jstree("get_selected");
-        console.log(ids);
-		for (i = 0; i < ids.length; ids++){
+        var ids = $('#transcripts').jstree("get_selected")
+                  .concat($('#scaffolds').jstree("get_selected")
+                  .concat($('#proteins').jstree("get_selected");
+        
+        for (i = 0; i < ids.length; ids++){
 			$('<input />').attr('type', 'hidden')
 				.attr('name', $('#'+ids[i]).attr('name'))
 				.attr('value', $('#'+ids[i]).attr('value'))

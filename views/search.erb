@@ -207,22 +207,22 @@
               </div>
               <% if type.include? "nucleotide" %>
                 <div style="margin-top:20px"><h5>CDS databases</h5></div>
-                <input id="transcripts_q"/>
-                <div id="transcripts">
+                <input id="transcripts_q" class="transcripts"/>
+                <div id="transcripts" class="treediv">
               	<%= hierarchy.ul(databases[type],'transcripts') %>
               	</div>
         
               	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
-                <input id="scaffolds_q"/>
-                <div id="scaffolds">
+                <input id="scaffolds_q" class="scaffolds"/>
+                <div id="scaffolds" class="treediv">
               	<%= hierarchy.ul(databases[type],'scaffolds') %>
               	</div>
               	
               	
               <% else %>
                 <!--div style="margin-top:20px"><h5>Protein databases</h5></div-->
-                <input id="proteins_q"/>
-                <div id="proteins">
+                <input id="proteins_q" class="proteins"/>
+                <div id="proteins" class="treediv">
               	<%= hierarchy.ul(databases[type],'proteins') %>
               	</div>
               <% end %>
@@ -499,7 +499,8 @@
 		
 		$('#scaffolds')
     	.jstree({
-			"plugins" : [ "checkbox", "search", "sort", "types" ]
+			"plugins" : [ "checkbox", "search", "sort", "types" ],
+			"themes" : { "icons", false }
 		})
 		
 		var sto = false;
@@ -513,7 +514,8 @@
 		
 		$('#proteins')
     	.jstree({
-			"plugins" : [ "checkbox", "search", "sort", "types" ]
+			"plugins" : [ "checkbox", "search", "sort", "types" ],
+			"themes" : { "icons", false }
 		})
 		
 		var pto = false;
