@@ -841,6 +841,7 @@ $(document).ready(function(){
         $('#spinner').modal();
 
         // add hidden fields to form
+        $('input').remove('.tree-hidden');
         $('.treediv').each(function(){
         	mytree = $(this);
         	var ids = mytree.jstree("get_selected");
@@ -848,6 +849,7 @@ $(document).ready(function(){
         		mynode = mytree.jstree('get_node',id);
         		if (mynode.li_attr && mynode.li_attr.value){
         			$('<input />').attr('type', 'hidden')
+        			.attr('class', 'tree-hidden')
 					.attr('name', mynode.li_attr.name)
 					.attr('value', mynode.li_attr.value)
 					.appendTo('#blast');
