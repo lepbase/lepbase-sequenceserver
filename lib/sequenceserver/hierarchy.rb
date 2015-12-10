@@ -84,7 +84,7 @@ module SequenceServer
           html += ' name="databases[]" value="'+value['db']+'" data-type="'+value['type']+'">'+key
         end
         if value['internal']
-          html += enlist(hash,key)
+          html += enlist(hash,key,suffix)
         end
         html += '</li>'
       end
