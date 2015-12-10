@@ -399,7 +399,7 @@ if (!SS) {
         this.$sequenceFile = $('#sequence-file');
         this.$sequenceControls = $('.sequence-controls');
 
-        SS.blast.init();
+        //SS.blast.init();
     };
 }()); //end SS module
 

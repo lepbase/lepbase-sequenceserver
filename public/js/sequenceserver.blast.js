@@ -135,7 +135,8 @@ SS.blast = (function () {
     var signal_database_type_changed = function () {
         var type = type_of_databases(), tmp;
 
-        $('.databases input').change(function () {
+        //$('.databases input').change(function () {
+        $('.treediv').on('changed.jstree',function (e,data) {
             tmp = type_of_databases();
 
             if (tmp != type) {

@@ -519,7 +519,9 @@
 		})
 		.bind('loaded.jstree', function(e, data) {
     		// invoked after jstree has loaded
-    		SS.blast.init();
+    		//setTimeout(function () {
+				SS.blast.init();
+    		//}, 1000);
 		})
 		
 		var pto = false;
