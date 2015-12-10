@@ -708,7 +708,7 @@ $(document).ready(function(){
         $('.notifications .active').hide('drop', {direction: 'up'}).removeClass('active');
     });
 
-    $('.databases').on('database_type_changed', function (event, type) {
+    $('.treediv').on('database_type_changed', function (event, type) {
         switch (type) {
             case 'protein':
                 $('.databases.nucleotide input:checkbox').disable();
