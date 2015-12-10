@@ -713,6 +713,10 @@ $(document).ready(function(){
             case 'protein':
                 $('.databases.nucleotide input:checkbox').disable();
                 $('.databases.nucleotide .checkbox').addClass('disabled');
+                $('.nucleotide .jstree-node').each(function(){
+					$(this).closest('div').jstree('disable_node',this.id);
+				});
+				$('input.nucleotide').attr('disabled',"true");
                 break;
             case 'nucleotide':
                 $('.databases.protein input:checkbox').disable();
