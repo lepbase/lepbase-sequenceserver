@@ -711,20 +711,22 @@ $(document).ready(function(){
     $('.treediv').on('database_type_changed', function (event, type) {
         switch (type) {
             case 'protein':
-                $('.databases.nucleotide input:checkbox').disable();
-                $('.databases.nucleotide .checkbox').addClass('disabled');
                 $('.nucleotide .jstree-node').each(function(){
 					$(this).closest('div').jstree('disable_node',this.id);
 				});
 				$('input.nucleotide').attr('disabled',"true");
                 break;
             case 'nucleotide':
-                $('.databases.protein input:checkbox').disable();
-                $('.databases.protein .checkbox').addClass('disabled');
+                $('.protein .jstree-node').each(function(){
+					$(this).closest('div').jstree('disable_node',this.id);
+				});
+				$('input.protein').attr('disabled',"true");
                 break;
             default:
-                $('.databases input:checkbox').enable();
-                $('.databases .checkbox').removeClass('disabled');
+                $('.jstree-node').each(function(){
+					$(this).closest('div').jstree('enable_node',this.id);
+				});
+				$('input').attr('disabled',"false");
                 break;
         }
     });
