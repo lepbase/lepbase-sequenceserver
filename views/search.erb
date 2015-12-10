@@ -254,13 +254,13 @@
               </div>
               <% if type.include? "nucleotide" %>
                 <div style="margin-top:20px"><h5>CDS databases</h5></div>
-                <input id="transcripts_q" class="nucleotide transcripts"/>
+                <input id="transcripts_q" class="nucleotide transcripts" placeholder="Search CDS databases..."/>
                 <div id="transcripts" class="nucleotide treediv">
               	<%= hierarchy.ul(databases[type],'transcripts') %>
               	</div>
         
               	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
-                <input id="scaffolds_q" class="nucleotide scaffolds"/>
+                <input id="scaffolds_q" class="nucleotide scaffolds" placeholder="Search Scaffold databases..."/>
                 <div id="scaffolds" class="nucleotide treediv">
               	<%= hierarchy.ul(databases[type],'scaffolds') %>
               	</div>
@@ -268,7 +268,7 @@
               	
               <% else %>
                 <div style="margin-top:20px"><h5>&nbsp;</h5></div>
-                <input id="proteins_q" class="protein proteins"/>
+                <input id="proteins_q" class="protein proteins" placeholder="Search Protein databases..."/>
                 <div id="proteins" class="protein treediv">
               	<%= hierarchy.ul(databases[type],'proteins') %>
               	</div>
