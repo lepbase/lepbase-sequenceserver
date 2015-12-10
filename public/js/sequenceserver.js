@@ -663,7 +663,7 @@ $(document).ready(function(){
                        " you can run a search!";
             }
         }
-    });*/
+    });
     $('#method').tooltip({
         title: function () {
             var title = "Click to BLAST or press Ctrl+Enter.";
@@ -685,7 +685,7 @@ $(document).ready(function(){
             $('#method').trigger('submit');
         }
     });
-
+*/
     $('#sequence').on('sequence_type_changed', function (event, type) {
         clearTimeout(notification_timeout);
         $(this).parent().removeClass('has-error');
