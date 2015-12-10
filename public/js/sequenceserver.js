@@ -841,7 +841,21 @@ $(document).ready(function(){
         $('#spinner').modal();
 
         // add hidden fields to form
-        var ids = $('#transcripts').jstree("get_selected")
+        $('.treediv').each(function(){
+        	mytree = $(this);
+        	var ids = mytree.jstree("get_selected");
+        	ids.forEach(function(id,i){
+        		mynode = mytree.jstree('get_node',id,true);
+        		if (mynode.li_attr.value){
+        			$('<input />').attr('type', 'hidden')
+					.attr('name', mynode.li_attr.name)
+					.attr('value', mynode.li_attr.value)
+					.appendTo('#blast');
+        		}
+			});
+        });
+        
+       /* var ids = $('#transcripts').jstree("get_selected")
                   .concat($('#scaffolds').jstree("get_selected"))
                   .concat($('#proteins').jstree("get_selected"));
         
@@ -852,7 +866,7 @@ $(document).ready(function(){
 					.attr('value', $('#'+id).attr('value'))
 					.appendTo('#blast');
 			}
-		});
+		});*/
 
         // BLAST now
         
