@@ -655,7 +655,7 @@ $(document).ready(function(){
     SS.onedb();
 
     // Show tooltip on BLAST button.
-    $('#methods').tooltip({
+   /* $('#methods').tooltip({
         title: function () {
             var selected_databases = $('.treediv').jstree(true).get_selected();
             if (selected_databases.length === 0) {
@@ -663,7 +663,7 @@ $(document).ready(function(){
                        " you can run a search!";
             }
         }
-    });
+    });*/
     $('#method').tooltip({
         title: function () {
             var title = "Click to BLAST or press Ctrl+Enter.";
