@@ -657,7 +657,7 @@ $(document).ready(function(){
     // Show tooltip on BLAST button.
     $('#methods').tooltip({
         title: function () {
-            var selected_databases = $(this).jstree(true).get_selected();
+            var selected_databases = $('.treediv').jstree(true).get_selected();
             if (selected_databases.length === 0) {
                 return "You must select one or more databases above before" +
                        " you can run a search!";
