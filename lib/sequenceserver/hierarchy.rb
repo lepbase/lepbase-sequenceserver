@@ -72,22 +72,24 @@ module SequenceServer
 
     def enlist(hash,parent,suffix)
       html = '<ul>'
-      hash[parent].each do |key,value|
-        html += '<li class="'+suffix+'-node'
-        if parent == 'root'
-        	html += ' jstree-open"'
-        else
-        	html += '"'
+      if hash[parent]
+       hash[parent].each do |key,value|
+         html += '<li class="'+suffix+'-node'
+         if parent == 'root'
+         	html += ' jstree-open"'
+         else
+         	html += '"'
+         end
+         if value['internal']
+           html += ' data-type="'+value['type']+'">'+key
+         else
+           html += ' name="databases[]" value="'+value['db']+'" data-type="'+value['type']+'">'+key
+         end
+         if value['internal']
+            html += enlist(hash,key,suffix)
+          end
+          html += '</li>'
         end
-        if value['internal']
-          html += ' data-type="'+value['type']+'">'+key
-        else
-          html += ' name="databases[]" value="'+value['db']+'" data-type="'+value['type']+'">'+key
-        end
-        if value['internal']
-          html += enlist(hash,key,suffix)
-        end
-        html += '</li>'
       end
       html += '</ul>'
       return html
