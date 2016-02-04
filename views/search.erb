@@ -26,20 +26,11 @@
     <link rel="stylesheet" media="screen,print" type="text/css" href="css/font-awesome.min.css"/>
     <link rel="stylesheet" media="screen,print" type="text/css" href="css/custom.css"/>
   <% end %>
-  
+  <link rel="stylesheet" type="text/css" href="css/themes/default/style.min.css">
 </head>
 
 <body>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-    ga('create', 'UA-61720759-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+  
   <div
     class="navbar">
     <div
@@ -50,7 +41,7 @@
         </span>
         <span href="http://sequenceserver.com" target="_blank" style="cursor:pointer">
         <small>
-          – powered by SequenceServer <small><%= SequenceServer::VERSION %></small>
+          – powered by SequenceServer</small>
         </small>
         </span>
     </a>
@@ -202,66 +193,6 @@
 
       </div>
 
-      <div
-        class="form-group databases-container">
-        <%# sort => same ordering of nucleotide and protein datbases %>
-        <% databases.keys.sort.each do |type| %>
-          <div
-            class="<%= databases[(databases.keys - [type]).first] ? 'col-md-6' : 'col-md-12' %>">
-            <div
-              class="panel panel-default">
-              <div
-                class="panel-heading">
-                <h4><%= type.capitalize %> databases</h4>
-              </div>
-              <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_transcripts"/></div--><h5>CDS databases</h5></div>
-              <% end %>
-              <ul
-                class="list-group databases <%= type %>">
-                <% databases[type].sort_by(&:title).each do |database| %>
-                  <% if database.title.include? "cds" or database.name.include? "cds" %>
-                    <li class="list-group-item">
-                      <div
-                        class="checkbox">
-                        <label>
-                          <input type="checkbox" class="transcripts" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
-                          <%= database.title or database.name %>
-                        </label>
-                      </div>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-              <% if type.include? "nucleotide" %>
-                <div style="margin-top:20px"><!--div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_scaffolds"/></div--><h5>Scaffold databases</h5></div>
-              <% else %>
-                <!--div style="margin-top:20px"><div style="float:left;margin:5px;margin-top:-3px"><input type="checkbox" id="toggle_proteins"/></div><h5>Protein databases</h5></div-->
-              <% end %>
-              <ul
-                class="list-group databases <%= type %>">
-                <% databases[type].sort_by(&:title).each do |database| %>
-                  <% if !database.title.include? "cds" or !database.name.include? "cds" %>
-                    <li class="list-group-item">
-                      <div
-                        class="checkbox">
-                        <label>
-                          <% if type.include? "nucleotide" %>
-                            <input type="checkbox" class="scaffolds" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
-                          <% else %>
-                            <input type="checkbox" class="proteins" name="databases[]" value="<%=database.id%>" data-type="<%=database.type%>" />
-                          <% end %>
-                          <%= database.title or database.name %>
-                        </label>
-                      </div>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        <% end %>
-      </div>
 
       <div
         class="form-group">
@@ -300,7 +231,7 @@
                 id="methods">
                 <button
                   type="submit"
-                  id="method" class="btn btn-primary form-control">
+                  id="method" class="btn btn-primary form-control" disabled="true">
                   blast
                 </button>
               </div>
@@ -308,6 +239,45 @@
           </div>
         </div>
       </div>
+      
+      <div
+        class="form-group databases-container">
+        <%# sort => same ordering of nucleotide and protein datbases %>
+        <% databases.keys.sort.each do |type| %>
+          <div
+            class="<%= databases[(databases.keys - [type]).first] ? 'col-md-6' : 'col-md-12' %>">
+            <div
+              class="panel panel-default">
+              <div
+                class="panel-heading">
+                <h4><%= type.capitalize %> databases</h4>
+              </div>
+              <% if type.include? "nucleotide" %>
+                <div style="margin-top:20px"><h5>CDS databases</h5></div>
+                <input id="transcripts_q" class="nucleotide transcripts" placeholder="Search CDS databases..."/>
+                <div id="transcripts" class="nucleotide treediv">
+              	<%= hierarchy.ul(databases[type],'cds') %>
+              	</div>
+        
+              	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
+                <input id="scaffolds_q" class="nucleotide scaffolds" placeholder="Search Scaffold databases..."/>
+                <div id="scaffolds" class="nucleotide treediv">
+              	<%= hierarchy.ul(databases[type],'scaffolds') %>
+              	</div>
+              	
+              	
+              <% else %>
+                <div style="margin-top:20px"><h5>&nbsp;</h5></div>
+                <input id="proteins_q" class="protein proteins" placeholder="Search Protein databases..."/>
+                <div id="proteins" class="protein treediv">
+              	<%= hierarchy.ul(databases[type],'proteins') %>
+              	</div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
     </form>
 
     <div
@@ -490,11 +460,90 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/webshims/polyfiller.js"></script>
     <script type="text/javascript" src="js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/jstree.min.js"></script>
     <script type="text/javascript" src="js/sequenceserver.js"></script>
     <script type="text/javascript" src="js/sequenceserver.blast.js"></script>
     <script type="text/javascript" src="js/jquery.t.js"></script>
     <script type="text/javascript" src="js/sequence.js"></script>
   <% end %>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-61720759-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  
+  <style>
+    input.nucleotide, input.protein { width: 250px; }
+  </style>
+  
+  <script>
+  
+  	
+  
+    $(function () { 
+    	$('#transcripts')
+    	.jstree({
+			"plugins" : [ "checkbox", "search", "sort", "types" ],
+			"core" : {
+				"themes" : { "icons": false }
+			}
+		})
+		
+	    var tto = false;
+  		$('#transcripts_q').keyup(function () {
+    		if(tto) { clearTimeout(tto); }
+    		tto = setTimeout(function () {
+				var v = $('#transcripts_q').val();
+				$('#transcripts').jstree(true).search(v);
+    		}, 250);
+  		});
+		
+		$('#scaffolds')
+    	.jstree({
+			"plugins" : [ "checkbox", "search", "sort", "types" ],
+			"core" : {
+				"themes" : { "icons": false }
+			}
+		})
+		
+		var sto = false;
+  		$('#scaffolds_q').keyup(function () {
+    		if(sto) { clearTimeout(sto); }
+    		sto = setTimeout(function () {
+				var v = $('#scaffolds_q').val();
+				$('#scaffolds').jstree(true).search(v);
+    		}, 250);
+  		});
+		
+		$('#proteins')
+    	.jstree({
+			"plugins" : [ "checkbox", "search", "sort", "types" ],
+			"core" : {
+				"themes" : { "icons": false }
+			}
+		})
+		
+		var pto = false;
+  		$('#proteins_q').keyup(function () {
+    		if(pto) { clearTimeout(pto); }
+    		pto = setTimeout(function () {
+				var v = $('#proteins_q').val();
+				$('#proteins').jstree(true).search(v);
+    		}, 250);
+  		});
+  		
+  		setTimeout(function () {
+				SS.blast.init();
+    		}, 500);
+		
+	  });
+  </script>
 
   <!-- twitter -->
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

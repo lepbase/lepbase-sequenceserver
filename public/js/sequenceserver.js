@@ -399,7 +399,7 @@ if (!SS) {
         this.$sequenceFile = $('#sequence-file');
         this.$sequenceControls = $('.sequence-controls');
 
-        SS.blast.init();
+        //SS.blast.init();
     };
 }()); //end SS module
 
@@ -655,9 +655,9 @@ $(document).ready(function(){
     SS.onedb();
 
     // Show tooltip on BLAST button.
-    $('#methods').tooltip({
+   /* $('#methods').tooltip({
         title: function () {
-            var selected_databases = $(".databases input:checkbox:checked");
+            var selected_databases = $('.treediv').jstree(true).get_selected();
             if (selected_databases.length === 0) {
                 return "You must select one or more databases above before" +
                        " you can run a search!";
@@ -685,7 +685,7 @@ $(document).ready(function(){
             $('#method').trigger('submit');
         }
     });
-
+*/
     $('#sequence').on('sequence_type_changed', function (event, type) {
         clearTimeout(notification_timeout);
         $(this).parent().removeClass('has-error');
@@ -708,19 +708,25 @@ $(document).ready(function(){
         $('.notifications .active').hide('drop', {direction: 'up'}).removeClass('active');
     });
 
-    $('.databases').on('database_type_changed', function (event, type) {
+    $('.treediv').on('database_type_changed', function (event, type) {
         switch (type) {
             case 'protein':
-                $('.databases.nucleotide input:checkbox').disable();
-                $('.databases.nucleotide .checkbox').addClass('disabled');
+                $('.nucleotide .jstree-node').each(function(){
+					$(this).closest('div').jstree('disable_node',this.id);
+				});
+				$('input.nucleotide').prop('disabled',true);
                 break;
             case 'nucleotide':
-                $('.databases.protein input:checkbox').disable();
-                $('.databases.protein .checkbox').addClass('disabled');
+                $('.protein .jstree-node').each(function(){
+					$(this).closest('div').jstree('disable_node',this.id);
+				});
+				$('input.protein').prop('disabled',true);
                 break;
             default:
-                $('.databases input:checkbox').enable();
-                $('.databases .checkbox').removeClass('disabled');
+                $('.jstree-node').each(function(){
+					$(this).closest('div').jstree('enable_node',this.id);
+				});
+				$('input').prop('disabled',false);
                 break;
         }
     });
@@ -834,8 +840,41 @@ $(document).ready(function(){
         // show activity spinner
         $('#spinner').modal();
 
+        // add hidden fields to form
+        $('input').remove('.tree-hidden');
+        $('.treediv').each(function(){
+        	mytree = $(this);
+        	var ids = mytree.jstree("get_selected");
+        	ids.forEach(function(id,i){
+        		mynode = mytree.jstree('get_node',id);
+        		if (mynode.li_attr && mynode.li_attr.value){
+        			$('<input />').attr('type', 'hidden')
+        			.attr('class', 'tree-hidden')
+					.attr('name', mynode.li_attr.name)
+					.attr('value', mynode.li_attr.value)
+					.appendTo('#blast');
+        		}
+			});
+        });
+        
+       /* var ids = $('#transcripts').jstree("get_selected")
+                  .concat($('#scaffolds').jstree("get_selected"))
+                  .concat($('#proteins').jstree("get_selected"));
+        
+        ids.forEach(function(id,i){
+        	if ($('#'+id).attr('value')){
+				$('<input />').attr('type', 'hidden')
+					.attr('name', $('#'+id).attr('name'))
+					.attr('value', $('#'+id).attr('value'))
+					.appendTo('#blast');
+			}
+		});*/
+
         // BLAST now
+        
+        //var data = ($(this).serialize() + '&method=' + $('#method').val());
         var data = ($(this).serialize() + '&method=' + $('#method').val());
+        
         $.post(url, data).
           done(function (data) {
             // BLASTed successfully
