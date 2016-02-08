@@ -176,6 +176,7 @@ module SequenceServer
     end
 
     def apollo
+      return nil
       taxa = {}
       taxa.default = 0
       taxa["bicyclus_anynana_nba01_core_27_80_1"] = 3993118
