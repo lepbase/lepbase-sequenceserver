@@ -139,7 +139,7 @@ module SequenceServer
       
       accession = encode accession
       colon = ':'
-      url = "http://ensembl.lepbase.org/#{assembly}"
+      url = "http://v1.ensembl.lepbase.org/#{assembly}"
       if type == 'protein' || type == 'aa'
         url = "#{url}/Transcript/ProteinSummary?db=core;p=#{accession}"
       elsif type == 'cds' || type == 'transcript'
@@ -166,6 +166,7 @@ module SequenceServer
     end
 
     def apollo
+    return nil
       taxa = {}
       taxa.default = 0
       taxa["bicyclus_anynana_nba01_core_27_80_1"] = 3993118
