@@ -9,6 +9,7 @@ module SequenceServer
   	def parents
       par = {
         'Agraulis' => 'Butterflies',
+  	    'Amyelois' => 'Moths',
   	    'Bicyclus' => 'Butterflies',
   	    'Bombyx' => 'Moths',
   	    'Chilo' => 'Moths',
@@ -20,10 +21,12 @@ module SequenceServer
   	    'Manduca' => 'Moths',
   	    'Melitaea' => 'Butterflies',
   	    'Neruda' => 'Butterflies',
+  	    'Operophtera' => 'Moths',
   	    'Papilio' => 'Butterflies',
   	    'Pieris' => 'Butterflies',
   	    'Plodia' => 'Moths',
-  	    'Plutella' => 'Moths'
+  	    'Plutella' => 'Moths',
+  	    'Spodoptera' => 'Moths'
   	  }
   	  par.default = @root
   	  return par
