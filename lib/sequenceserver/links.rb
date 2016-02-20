@@ -91,13 +91,12 @@ module SequenceServer
 
     def lepbase
       taxa = {}
-      taxa.default = 0
       #taxa["agraulis_vanillae_helico2_core_27_80_2"] = "Agraulis_vanillae_helico2"
       taxa["amyelois_transitella_v1_core_27_80_2"] = "Amyelois_transitella_v1"
       taxa["bicyclus_anynana_nba01_core_27_80_1"] = "Bicyclus_anynana_nba01"
       taxa["bicyclus_anynana_v1x2_core_27_80_2"] = "Bicyclus_anynana_v1x2"
       taxa["bombyx_mori_core_27_80_1"] = "Bombyx_mori"
-      taxa["bombyx_mori_asm15162v1_core_27_80_2"] = "Bombyx_mori_v1"
+      taxa["bombyx_mori_asm15162v1_core_27_80_2"] = "Bombyx_mori_asm15162v1"
       taxa["chilo_suppressalis_csuogs1_core_27_80_2"] = "Chilo_suppressalis_csuogs1"
       taxa["danaus_plexippus_core_27_80_1"] = "Danaus_plexippus"
       taxa["danaus_plexippus_v3_core_27_80_2"] = "Danaus_plexippus_v3"
@@ -144,8 +143,8 @@ module SequenceServer
         accession = Regexp.last_match[3]
       end
       return nil unless accession
+      return nil unless taxa.has_key?(assembly)
       assembly = encode taxa[assembly]
-      return nil if assembly == 0
       
       accession = encode accession
       colon = ':'
