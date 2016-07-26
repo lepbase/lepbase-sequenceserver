@@ -510,7 +510,7 @@ svg:not(:root) {
 
 div.lb-menu-category {
     float: left;
-    height: 22px;
+    height: 36px;
     margin-left: 4px;
     background-color: #fff;
     padding: 5px;
@@ -533,4 +533,16 @@ img.lb-menu-linkicon {
     display: inline-block;
     vertical-align: middle;
     margin-right: 5px;
+}
+
+.lb-tools-holder {
+  padding-top:24px;
+}
+
+.lb-logo {
+    width: 150px;
+    height: 50px;
+    margin-top: 11px;
+    margin-right: 49px;
+    float: left;
 }
