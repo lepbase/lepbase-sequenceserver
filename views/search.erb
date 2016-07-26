@@ -30,19 +30,28 @@
 </head>
 
 <body>
-  
+
   <div
     class="navbar">
     <div
       class="container">
-      <a class="navbar-brand">
-        <span href="http://blast.lepbase.org" style="cursor:pointer">
-          BLAST Lepbase (release 2)
-        </span>
-                <a href="http://v1.blast.lepbase.org" target="_blank" style="cursor:pointer">
-        <small>go to release 1</small>
-        </a>
-    </a>
+      <a href="/">
+        <img src="/i/blast-lepbase.png?v=3" alt="Home" title="Home" style="width:150px;height:50px">
+      </a>
+      <div class="lb-tools-holder">
+          <a href="http://blast.lepbase.org" title="BLAST">
+              <div class="lb-menu-category"><img title="tools" src="/i/tools-icon.png" class="lb-menu-linkicon">BLAST</div>
+          </a>
+          <a href="http://download.lepbase.org" title="Download">
+              <div class="lb-menu-category"><img title="download" src="/i/download-icon.png" class="lb-menu-linkicon">Downloads</div>
+          </a>
+          <a href="http://lepbase.org" title="lepbase.org">
+              <div class="lb-menu-category"><img title="lepbase" src="/i/lepbase-icon.png" class="lb-menu-linkicon">lepbase.org</div>
+          </a>
+          <a href="http://lepbase.org/tag/help" title="Help">
+              <div class="lb-menu-category"><img title="lepbase" src="/i/help-icon.png" class="lb-menu-linkicon">Help</div>
+          </a>
+      </div>
       <!--ul class="nav navbar-nav navbar-right hover-reset focus-reset">
         <li>
           <a
@@ -237,7 +246,7 @@
           </div>
         </div>
       </div>
-      
+
       <div
         class="form-group databases-container">
         <%# sort => same ordering of nucleotide and protein datbases %>
@@ -256,14 +265,14 @@
                 <div id="transcripts" class="nucleotide treediv">
               	<%= hierarchy.ul(databases[type],'cds') %>
               	</div>
-        
+
               	<div style="margin-top:20px"><h5>Scaffold databases</h5></div>
                 <input id="scaffolds_q" class="nucleotide scaffolds" placeholder="Search Scaffold databases..."/>
                 <div id="scaffolds" class="nucleotide treediv">
               	<%= hierarchy.ul(databases[type],'scaffolds') %>
               	</div>
-              	
-              	
+
+
               <% else %>
                 <div style="margin-top:20px"><h5>&nbsp;</h5></div>
                 <input id="proteins_q" class="protein proteins" placeholder="Search Protein databases..."/>
@@ -275,7 +284,7 @@
           </div>
         <% end %>
       </div>
-      
+
     </form>
 
     <div
@@ -293,7 +302,7 @@
         href='http://www.sequenceserver.com'>
         <%=
           quote = [
-            "Lepbase BLAST interface – powered by SequenceServer." 
+            "Lepbase BLAST interface – powered by SequenceServer."
           ][rand(1)]
         %>
       </a>
@@ -318,7 +327,7 @@
       </a>
       <%#<div class="g-plusone" data-annotation="none" data-href="http://www.sequenceserver.com"></div>%-->
 
-      
+
     </p>
   </div>
 
@@ -463,27 +472,27 @@
     <script type="text/javascript" src="js/jquery.t.js"></script>
     <script type="text/javascript" src="js/sequence.js"></script>
   <% end %>
-  
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
+
     ga('create', 'UA-61720759-2', 'auto');
     ga('send', 'pageview');
 
   </script>
-  
+
   <style>
     input.nucleotide, input.protein { width: 250px; }
   </style>
-  
+
   <script>
-  
-  	
-  
-    $(function () { 
+
+
+
+    $(function () {
     	$('#transcripts')
     	.jstree({
 			"plugins" : [ "checkbox", "search", "sort", "types" ],
@@ -491,7 +500,7 @@
 				"themes" : { "icons": false }
 			}
 		})
-		
+
 	    var tto = false;
   		$('#transcripts_q').keyup(function () {
     		if(tto) { clearTimeout(tto); }
@@ -500,7 +509,7 @@
 				$('#transcripts').jstree(true).search(v);
     		}, 250);
   		});
-		
+
 		$('#scaffolds')
     	.jstree({
 			"plugins" : [ "checkbox", "search", "sort", "types" ],
@@ -508,7 +517,7 @@
 				"themes" : { "icons": false }
 			}
 		})
-		
+
 		var sto = false;
   		$('#scaffolds_q').keyup(function () {
     		if(sto) { clearTimeout(sto); }
@@ -517,7 +526,7 @@
 				$('#scaffolds').jstree(true).search(v);
     		}, 250);
   		});
-		
+
 		$('#proteins')
     	.jstree({
 			"plugins" : [ "checkbox", "search", "sort", "types" ],
@@ -525,7 +534,7 @@
 				"themes" : { "icons": false }
 			}
 		})
-		
+
 		var pto = false;
   		$('#proteins_q').keyup(function () {
     		if(pto) { clearTimeout(pto); }
@@ -534,11 +543,11 @@
 				$('#proteins').jstree(true).search(v);
     		}, 250);
   		});
-  		
+
   		setTimeout(function () {
 				SS.blast.init();
     		}, 500);
-		
+
 	  });
   </script>
 
