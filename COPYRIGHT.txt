@@ -15,4 +15,4 @@ found in LICESNSE/Apache.txt.
 LepBlast is a fork of SequenceServer for the LepBase Project, with minor 
 changes to configuration files to customise the appearance and content for
 the Lepidoptera under the same license as SequenceServer, copyright Richard 
-Challis and Sujai Kumar at the University of Edinburgh, 2015.
+Challis and Sujai Kumar at the University of Edinburgh, 2015-2016.
