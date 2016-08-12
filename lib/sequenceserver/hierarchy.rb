@@ -19,7 +19,7 @@ module SequenceServer
   	    'Heliconius' => 'Butterflies',
   	    'Laparus' => 'Butterflies',
   	    'Lerema' => 'Butterflies',
-        'Limnephilus' => 'Caddis flies',
+        'Limnephilus' => 'Outgroups',
   	    'Manduca' => 'Moths',
   	    'Melitaea' => 'Butterflies',
   	    'Neruda' => 'Butterflies',
