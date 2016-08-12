@@ -1,29 +1,32 @@
 module SequenceServer
   # Module to contain methods for dealing with taxonomic hierarchy.
   class Hierarchy
-  
+
   	def initialize (root = 'Lepidoptera')
     	@root = root
     end
-    
+
   	def parents
       par = {
         'Agraulis' => 'Butterflies',
   	    'Amyelois' => 'Moths',
   	    'Bicyclus' => 'Butterflies',
   	    'Bombyx' => 'Moths',
+  	    'Calycopis' => 'Moths',
   	    'Chilo' => 'Moths',
   	    'Danaus' => 'Butterflies',
   	    'Eueides' => 'Butterflies',
   	    'Heliconius' => 'Butterflies',
   	    'Laparus' => 'Butterflies',
   	    'Lerema' => 'Butterflies',
+        'Limnephilus' => 'Caddis flies',
   	    'Manduca' => 'Moths',
   	    'Melitaea' => 'Butterflies',
   	    'Neruda' => 'Butterflies',
   	    'Operophtera' => 'Moths',
   	    'Papilio' => 'Butterflies',
   	    'Pieris' => 'Butterflies',
+  	    'Phoebis' => 'Butterflies',
   	    'Plodia' => 'Moths',
   	    'Plutella' => 'Moths',
   	    'Spodoptera' => 'Moths'
@@ -31,7 +34,7 @@ module SequenceServer
   	  par.default = @root
   	  return par
     end
-    
+
     def nesting(name)
       arr = [name]
       until name == @root
@@ -40,7 +43,7 @@ module SequenceServer
       end
       return arr
     end
-    
+
     def nested_list(databases,suffix = '')
       hash = {}
       databases.each do |database|
@@ -100,4 +103,3 @@ module SequenceServer
 
   end
 end
-
