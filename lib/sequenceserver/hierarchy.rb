@@ -2,7 +2,7 @@ module SequenceServer
   # Module to contain methods for dealing with taxonomic hierarchy.
   class Hierarchy
 
-  	def initialize (root = 'Lepidoptera')
+  	def initialize (root = 'All')
     	@root = root
     end
 
@@ -13,23 +13,30 @@ module SequenceServer
   	    'Bicyclus' => 'Butterflies',
   	    'Bombyx' => 'Moths',
   	    'Calycopis' => 'Moths',
+  	    'Callimorpha' => 'Moths',
+  	    'Cameraria' => 'Moths',
   	    'Chilo' => 'Moths',
   	    'Danaus' => 'Butterflies',
+  	    'Dryas' => 'Butterflies',
   	    'Eueides' => 'Butterflies',
   	    'Heliconius' => 'Butterflies',
+  	    'Hepialus' => 'Moths',
   	    'Laparus' => 'Butterflies',
   	    'Lerema' => 'Butterflies',
         'Limnephilus' => 'Outgroups',
+        'Glyphotaelius' => 'Outgroups',
   	    'Manduca' => 'Moths',
   	    'Melitaea' => 'Butterflies',
   	    'Neruda' => 'Butterflies',
   	    'Operophtera' => 'Moths',
   	    'Papilio' => 'Butterflies',
+  	    'Pararge' => 'Butterflies',
   	    'Pieris' => 'Butterflies',
   	    'Phoebis' => 'Butterflies',
   	    'Plodia' => 'Moths',
   	    'Plutella' => 'Moths',
-  	    'Spodoptera' => 'Moths'
+  	    'Polygonia' => 'Butterflies',
+  	    'Spodoptera' => 'Moths',
   	  }
   	  par.default = @root
   	  return par
